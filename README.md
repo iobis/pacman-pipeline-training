@@ -17,7 +17,7 @@ sudo chown -R :condausers /mnt/lfw-ds001-v019/data
 sudo chmod -R 775 /mnt/lfw-ds001-v019/data
 ```
 
-### Create user account
+### Create a user account
 
 - Create a user
 
