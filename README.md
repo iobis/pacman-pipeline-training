@@ -59,7 +59,7 @@ cd PacMAN-pipeline
 conda activate snakemake
 ```
 
-### Connecting using Visual Studio Code
+## Connecting using Visual Studio Code
 
 - Install Visual Studio Code from <https://visualstudio.microsoft.com/>.
 - In Visual Studio, install the Remote Explorer extension from Microsoft.
@@ -69,5 +69,10 @@ conda activate snakemake
 ssh testuser@lfw-ds001-i035.lifewatch.dev
 ```
 
-- Then click Connect and enter your password
+- Then connect to the newly created SSH target and enter your password
 - You can now open your folder `/home/testuser/PacMAN-pipeline` in the Explorer
+
+## Running the pipeline
+
+- Click `pipeline` in the NPM scripts panel on the bottom left
+
