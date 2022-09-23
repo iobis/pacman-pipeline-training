@@ -39,6 +39,19 @@ su - testuser
 conda init
 ```
 
+- Install the pipeline
+
+```
+git clone https://github.com/iobis/PacMAN-pipeline.git
+```
+
+- Link to the shared databases
+
+```
+cd PacMAN-pipeline
+ln -s /home/ubuntu/data/databases/ data/databases
+```
+
 - Add to `/home/testuser/.bashrc`:
 
 ```
