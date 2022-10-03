@@ -10,9 +10,16 @@ In this step we use [Trimmomatic](https://github.com/usadellab/Trimmomatic) to t
 
 Image from Metagenomics for Software Carpentry[^1].
 
-## Cutadapt
+## Removing primer sequences
+
+[Cutadapt](https://github.com/marcelm/cutadapt) is used to remove the primer sequences.
 
 ## DADA2
+### Filtering and trimming
+
+DADA2 [filterAndTrim](https://rdrr.io/bioc/dada2/man/filterAndTrim.html) is used to truncate the reads at a specified length or quality threshold.
+
+### ASV inference
 
 ## Bowtie2
 

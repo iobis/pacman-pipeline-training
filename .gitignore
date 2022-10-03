@@ -1,3 +1,7 @@
 .DS_Store
-datasets
+.Rhistory
+*.fastq
+*.fastq.gz
+datasets/rey/subset
+datasets/rey/results*
 
