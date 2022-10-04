@@ -7,7 +7,7 @@ Training materials for the PacMAN bioinformatics pipeline.
 
 ## Example datasets
 
-- [Rey et al.](datasets/rey)
+- [Rey et al. 2020. Considerations for metabarcoding-based port biological baseline surveys aimed at marine nonindigenous species monitoring and risk assessments](datasets/rey)
 
 ## Resources
 
