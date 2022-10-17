@@ -4,4 +4,5 @@
 *.fastq.gz
 datasets/rey/subset
 datasets/rey/results*
-
+*.Rproj
+.Rproj.user

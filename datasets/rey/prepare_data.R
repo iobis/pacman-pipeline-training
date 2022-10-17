@@ -44,4 +44,4 @@ samples <- runs %>%
   select("sample-id" = BioSample, eventID = BioSample, materialSampleID = BioSample, eventRemarks = samp_collect_device, verbatimCoordinates = Lat_Lon, locality = geo_loc_name, verbatimDepth = Depth, eventDate = Collection_Date) %>%
   mutate(occurrenceStatus = "present")
 
-write.csv(samples, "raw_data/sample_data_template_rey.csv", row.names = FALSE, quote = FALSE)
+write.csv(samples, "raw_data/sample_data_template_rey.csv", row.names = FALSE, quote = FALSE, sep = ";")
