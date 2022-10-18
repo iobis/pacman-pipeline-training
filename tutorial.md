@@ -41,7 +41,7 @@ Image from Metagenomics for Software Carpentry[^1].
 
 [Cutadapt](https://github.com/marcelm/cutadapt) is used to remove the primer sequences. Forward and reverse primer sequences need to be configured in the config file.
 
-Let's take a look at one of the reads from the example dataset as it is processed with Trimmomatic and Cutadapt. Notice how the first step has trimmed the low quality nucleotides at the end of the sequence, while the primer sequence `GGWACWGGWTGAACWGTWTAYCCYCC` has been remove from the start of the read:
+Let's take a look at one of the reads from the example dataset as it is processed with Trimmomatic and Cutadapt. Notice how the first step has trimmed the low quality nucleotides at the end of the sequence, while the primer sequence `GGWACWGGWTGAACWGTWTAYCCYCC` has been remove from the start of the read in the second step:
 
 ![msa](images/msa.png)  
 
