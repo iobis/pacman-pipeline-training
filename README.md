@@ -3,8 +3,9 @@
 This repository contains the training materials for the PacMAN bioinformatics pipeline:
 
 - [Bioinformatics pipeline tutorial](tutorial.md)
-- [Setting up a shared server for training](server_setup.md)
-- [Bioinformatics pipeline diagram](https://raw.githubusercontent.com/iobis/PacMAN-pipeline/master/documentation/diagram.png)
+- [R crash course]()
+- [Data analysis tutorial]()
+- [Setting up a shared server for training](server_setup.md) (for trainers)
 
 ## Example datasets
 

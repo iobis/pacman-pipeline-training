@@ -95,7 +95,76 @@ Results are also exported as a phyloseq object.
 
 ## Running the pipeline
 
-To do.
+### Installation instructions for Windows
+#### Install conda
+
+The official installation instructions for conda can be found [here](https://docs.conda.io/projects/conda/en/latest/user-guide/install/windows.html).
+
+Install the latest miniconda from <https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe>. Tick the `Add Miniconda3 to my PATH environment variable` checkbox.
+
+#### Install Snakemake
+
+Open a conda session by selecting `Anaconda3` > `Anaconda Powershell Prompt` from the start menu.
+
+Install `mamba` by typing the following into the prompt:
+
+```
+conda install -n base -c conda-forge mamba
+```
+
+Enter `y` if confirmation is asked.
+
+Next, install Snakemake:
+
+```
+mamba create -c conda-forge -c bioconda -n snakemake snakemake
+```
+
+#### Install git
+
+Install git from <https://git-scm.com/download/win>.
+
+#### Install Visual Studio Code
+
+Download Visual Studio Code from <https://code.visualstudio.com/Download>.
+
+#### Download the pipeline
+
+Clone the pipeline repository to your machine:
+
+```
+git clone https://github.com/iobis/PacMAN-pipeline.git
+```
+
+#### Download the reference database
+
+```
+cd PacMAN-pipeline
+cd data
+mkdir databases
+cd databases
+mkdir midori
+```
+
+Download and extract the following files to the newly created `data/databases/midori` directory:
+
+- http://www.reference-midori.info/forceDownload.php?fName=download/Databases/GenBank246/QIIME/uniq/MIDORI_UNIQ_NUC_GB246_CO1_QIIME.fasta.gz
+- http://www.reference-midori.info/forceDownload.php?fName=download/Databases/GenBank246/QIIME/uniq/MIDORI_UNIQ_NUC_GB246_CO1_QIIME.taxon.gz
+
+### Configure and run the pipeline
+#### Download the raw reads
+
+#### Configure the pipeline
+
+#### Run the pipeline
+
+First open the pipeline folder in Visual Studio Code (`File` > `Open Folder`).
+
+Run the pipeline using the following command:
+
+```
+snakemake --use-conda --configfile ./config/config.yaml --rerun-incomplete --printshellcmds --cores 4
+```
 
 ## Analysis of the pipeline results
 

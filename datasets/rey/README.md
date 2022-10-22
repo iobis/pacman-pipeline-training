@@ -9,5 +9,5 @@
 
 ## Scripts
 
-- [prepare_data.R](prepare_data.R): downloads raw data from SRA, prepare CSV files for the pipeline
-- [create_subset.R](create_subset.R): creates a subset of raw reads based on the full dataset results, to be used for faster demonstration run of the pipeline
+- [scripts/prepare_data.R](prepare_data.R): downloads raw data from SRA, prepare CSV files for the pipeline
+- [scripts/create_subset.R](create_subset.R): creates a subset of raw reads based on the full dataset results, to be used for faster demonstration run of the pipeline

@@ -1,0 +1,228 @@
+---
+title: Rey et al. 2020 data analysis
+date: "`r Sys.Date()`"
+author: Pieter Provoost
+output: (function(...) {
+  rmdformats::robobook(toc_depth = 4, pandoc_args = c("+RTS", "-K2000m", "-RTS"), ...) })
+editor_options: 
+  chunk_output_type: console
+knit: (function(inputFile, encoding) {
+  rmarkdown::render(inputFile, encoding = encoding, output_dir = "docs") })  
+---
+
+<style>
+img { box-shadow: none !important; border: 0px !important; }
+</style>
+
+## Resources
+
+- https://deneflab.github.io/MicrobeMiseq/demos/mothur_2_phyloseq.html
+- https://joey711.github.io/phyloseq/plot_ordination-examples.html
+- https://david-barnett.github.io/microViz/articles/web-only/ordination.html
+- https://www.gdc-docs.ethz.ch/MDA/handouts/MDA20_PhyloseqFormation_Mahendra_Mariadassou.pdf
+- http://rstudio-pubs-static.s3.amazonaws.com/266780_cac4994322494658904507a7606b1dd8.html
+
+## Running this notebook
+
+To do.
+
+## Importing data
+
+The PacMAN pipeline exports results as a `phyloseq` object which can be imported into R for analysis. This is how `phyloseq` objects are structured:
+
+![Figure from <https://joey711.github.io/phyloseq/import-data.html>](phyloseq.png)
+
+Read the `phyloseq` object and verify that we have a OTU table, a sample table, and a taxonomy table. A phylogenetic tree has not been calculated so that slot is empty.
+
+```{r message=FALSE, warning=FALSE}
+physeq <- readRDS("../results_noblast/phyloseq_object.rds")
+
+physeq
+```
+
+While we can access these tables individually, the phyloseq package also has a function `psmelt()` to convert the `phyloseq` object into a single large data frame:
+
+```{r message=FALSE, warning=FALSE}
+library(dplyr)
+
+df <- psmelt(physeq) %>%
+  mutate_if(is.character, list(~na_if(., ""))) %>%
+  as_tibble()
+
+df
+```
+
+## Exploratory data analysis
+
+### TRIAL PHYLOSEQ
+
+```{r message=FALSE, warning=FALSE}
+df_phylum <- physeq %>%
+  tax_glom(taxrank = "phylum") %>%
+  transform_sample_counts(function(x) { x / sum(x) }) %>%
+  psmelt() %>%
+  filter(Abundance > 0.02) %>%
+  arrange(phylum)   
+
+
+ggplot(df_phylum, aes(x = Sample, y = Abundance, fill = phylum)) + 
+  geom_bar(stat = "identity")
+
+```
+
+### Abundance by sample type and phylum
+
+```{r message=FALSE, warning=FALSE}
+library(tidyr)
+
+stats <- df %>%
+  group_by(eventRemarks, phylum) %>%
+  summarize(abundance = sum(Abundance))
+
+spread(stats, eventRemarks, abundance) %>%
+  mutate(total = `settlement plates` + `filtered water`) %>%
+  arrange(desc(total)) %>%
+  knitr::kable()
+```
+
+```{r message=FALSE, warning=FALSE}
+library(ggplot2)
+
+stats_simplified <- stats %>%
+  mutate(
+    phylum = case_when(phylum = abundance < 5000 ~ "Other", TRUE ~ phylum)
+  ) %>%
+  group_by(eventRemarks) %>%
+  mutate(abundance = abundance / sum(abundance)) %>%
+  group_by(eventRemarks, phylum) %>%
+  summarize(abundance = sum(abundance))
+  
+ggplot() +
+  geom_bar(data = stats_simplified, aes(y = eventRemarks, fill = phylum, x = abundance), stat = "identity") +
+  scale_fill_brewer(palette = "Spectral", na.value = "#eeeeee") + theme_minimal()
+```
+
+### Abundance (reads) by sample and phylum
+
+```{r message=FALSE, warning=FALSE}
+stats <- df %>%
+  rename(sample = Sample) %>%
+  group_by(sample, eventRemarks, phylum) %>%
+  summarize(abundance = sum(Abundance))
+
+stats_simplified <- stats %>%
+  mutate(
+    phylum = case_when(phylum = abundance < 2000 ~ "Other", TRUE ~ phylum)
+  ) %>%
+  group_by(sample) %>%
+  mutate(relative_abundance = abundance / sum(abundance)) %>%
+  group_by(sample, eventRemarks, phylum) %>%
+  summarize(abundance = sum(abundance), relative_abundance = sum(relative_abundance))
+  
+ggplot() +
+  geom_bar(data = stats_simplified, aes(y = sample, fill = phylum, x = relative_abundance), stat = "identity") +
+  scale_fill_brewer(palette = "Spectral", na.value = "#eeeeee") +
+  theme_minimal() +
+  theme(panel.grid.major.y = element_blank(), panel.grid.minor.y = element_blank())
+```
+
+```{r message=FALSE, warning=FALSE}
+ggplot() +
+  geom_bar(data = stats_simplified, aes(y = sample, fill = phylum, x = abundance), stat = "identity") +
+  scale_fill_brewer(palette = "Spectral", na.value = "#eeeeee") +
+  theme_minimal() +
+  theme(panel.grid.major.y = element_blank(), panel.grid.minor.y = element_blank())
+```
+
+### Diversity (ASVs) by sample and phylum
+
+```{r message=FALSE, warning=FALSE}
+stats <- df %>%
+  filter(Abundance > 0) %>%
+  rename(sample = Sample) %>%
+  group_by(sample, eventRemarks, phylum) %>%
+  summarize(asvs = n())
+
+stats_simplified <- stats %>%
+  mutate(
+    phylum = case_when(phylum = asvs < 16 ~ "Other", TRUE ~ phylum)
+  ) %>%
+  group_by(sample, eventRemarks, phylum) %>%
+  summarize(asvs = sum(asvs))
+  
+ggplot() +
+  geom_bar(data = stats_simplified, aes(y = sample, fill = phylum, x = asvs), stat = "identity") +
+  scale_fill_brewer(palette = "Spectral", na.value = "#eeeeee") +
+  theme_minimal() +
+  theme(panel.grid.major.y = element_blank(), panel.grid.minor.y = element_blank())
+```
+
+### Most abundant species
+
+Let's list the species with the highest relative abundance across all samples:
+
+```{r message=FALSE, warning=FALSE}
+top_species <- df %>%
+  filter(!is.na(species)) %>%
+  group_by(species) %>%
+  summarize(abundance = sum(Abundance)) %>%
+  arrange(desc(abundance)) %>%
+  head(20)
+
+top_species %>% knitr::kable()
+```
+
+For the most abundant species, plot the abundance by sample:
+
+```{r message=FALSE, warning=FALSE}
+stats <- df %>%
+  filter(species %in% top_species$species) %>%
+  group_by(species, eventRemarks, Sample) %>%
+  summarize(abundance = sum(Abundance))
+
+ggplot() +
+  geom_jitter(data = stats, aes(y = species, x = abundance, color = eventRemarks), pch = 21, height = 0.1, width = 0) +
+  scale_color_brewer(palette = "Set1") +
+  theme_minimal()
+```
+
+## Invasive species
+
+In this section we will check our results against the World Register of Introduced Marine Species (WRiMS). The repository contains a CSV file containing the LSIDs for all species in WRiMS.
+
+```{r message=FALSE, warning=FALSE}
+wrims_lsids <- read.csv("wrims_lsids.csv")
+
+invasives <- df %>%
+  filter(lsid %in% wrims_lsids$lsid)
+
+invasives %>%
+  group_by(phylum, species) %>%
+  summarize(abundance = sum(Abundance)) %>%
+  arrange(desc(abundance)) %>%
+  rmarkdown::paged_table()
+```
+
+## ASV accumulation curves
+
+To do.
+
+## Alpha and beta diversity
+
+To do.
+
+## Multidimensional scaling
+
+```{r message=FALSE, warning=FALSE}
+ord <- ordinate(physeq = physeq, method = "PCoA", distance = "bray")
+
+plot_ordination(physeq = physeq, ordination = ord, type = "samples", color = "eventRemarks", shape = "locality") +
+  geom_point(aes(color = eventRemarks), alpha = 1, size = 4) +
+  geom_text(aes(label = materialSampleID), alpha = 0.7, size = 3, vjust = 2) +
+  stat_ellipse(aes(group = eventRemarks)) +
+  scale_color_brewer(palette = "Set1") +
+  theme_classic()
+
+# todo: Canonical analysis of principal coordinates
+
+```
