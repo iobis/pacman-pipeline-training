@@ -94,21 +94,52 @@ In this optional step, BLASTn is used against a local copy of the full NCBI nt (
 Results are also exported as a phyloseq object.
 
 ## Running the pipeline
-
 ### Installation instructions for Windows
+
+To be able to run the pipeline on Windows systems, we'll need to install the Windows Subsystem for Linux (WSL 2).
+
+#### Enable Windows Subsystem for Linux (WSL 2)
+
+Open `Apps and features` from the Windows start menu. Go to `Programs and Features` and `Turn Windows features on or off`. Ensure that the following features have been enabled:
+
+- Windows Subsystem for Linux
+- Virtual Machine Platform
+
+Set the default WSL version to 2 by opening `Command Prompt` and typing:
+
+```
+wsl --set-default-version 2
+```
+
+#### Install Ubuntu
+
+Now install Ubuntu in WSL and verify that Ubuntu is running with WSL 2:
+
+```
+wsl --install -d Ubuntu
+wsl -l -v
+```
+
 #### Install conda
 
-The official installation instructions for conda can be found [here](https://docs.conda.io/projects/conda/en/latest/user-guide/install/windows.html).
+Now open the Ubuntu terminal from the start menu and run the commands below to download and install Miniconda. You will be asked first to create an user account on Ubuntu.
 
-Install the latest miniconda from <https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe>. Tick the `Add Miniconda3 to my PATH environment variable` checkbox.
+```
+sudo apt-get update
+sudo apt-get install wget
+wget https://repo.anaconda.com/miniconda/Miniconda3-py39_4.12.0-Linux-x86_64.sh
+chmod +x Miniconda3-py39_4.12.0-Linux-x86_64.sh
+./Miniconda3-py39_4.12.0-Linux-x86_64.sh
+```
+
+After installing Miniconda, close the terminal and start a new one.
 
 #### Install Snakemake
 
-Open a conda session by selecting `Anaconda3` > `Anaconda Powershell Prompt` from the start menu.
-
-Install `mamba` by typing the following into the prompt:
+After starting a new Ubuntu session, install `mamba` by typing the following into the terminal:
 
 ```
+conda init
 conda install -n base -c conda-forge mamba
 ```
 
@@ -120,10 +151,6 @@ Next, install Snakemake:
 mamba create -c conda-forge -c bioconda -n snakemake snakemake
 ```
 
-#### Install git
-
-Install git from <https://git-scm.com/download/win>.
-
 #### Install Visual Studio Code
 
 Download Visual Studio Code from <https://code.visualstudio.com/Download>.
@@ -133,32 +160,44 @@ Download Visual Studio Code from <https://code.visualstudio.com/Download>.
 Clone the pipeline repository to your machine:
 
 ```
+cd Desktop
 git clone https://github.com/iobis/PacMAN-pipeline.git
 ```
 
 #### Download the reference database
 
-```
-cd PacMAN-pipeline
-cd data
-mkdir databases
-cd databases
-mkdir midori
-```
+Download and extract the following files to `data/databases/midori` (create if necessary):
 
-Download and extract the following files to the newly created `data/databases/midori` directory:
+- http://www.reference-midori.info/forceDownload.php?fName=download/Databases/GenBank246/QIIME_sp/uniq/MIDORI_UNIQ_SP_NUC_GB246_CO1_QIIME.fasta.gz
+- http://www.reference-midori.info/forceDownload.php?fName=download/Databases/GenBank246/QIIME_sp/uniq/MIDORI_UNIQ_SP_NUC_GB246_CO1_QIIME.taxon.gz
 
-- http://www.reference-midori.info/forceDownload.php?fName=download/Databases/GenBank246/QIIME/uniq/MIDORI_UNIQ_NUC_GB246_CO1_QIIME.fasta.gz
-- http://www.reference-midori.info/forceDownload.php?fName=download/Databases/GenBank246/QIIME/uniq/MIDORI_UNIQ_NUC_GB246_CO1_QIIME.taxon.gz
+Another option is to download the prebuilt Bowtie2 database. Download and extract the following file to `resources/bowtie2_dbs`:
+
+- https://datasets.obis.org/shared/MIDORI_UNIQ_GB246_CO1.zip
 
 ### Configure and run the pipeline
 #### Download the raw reads
 
+Download these data files to `data/rey` (create if necessary):
+
+- https://github.com/iobis/pacman-pipeline-training/blob/master/datasets/rey/raw_data/SRR8759981_1.fastq.gz?raw=true
+- https://github.com/iobis/pacman-pipeline-training/blob/master/datasets/rey/raw_data/SRR8759981_2.fastq.gz?raw=true
+- https://github.com/iobis/pacman-pipeline-training/blob/master/datasets/rey/raw_data/SRR8760137_1.fastq.gz?raw=true
+- https://github.com/iobis/pacman-pipeline-training/blob/master/datasets/rey/raw_data/SRR8760137_2.fastq.gz?raw=true
+
+#### Open the pipeline in Visual Studio Code
+
+First open Visual Studio Code from WSL by starting a Ubuntu terminal and typing:
+
+```
+code
+```
+
+Visual Studio Code should start. Then open the pipeline folder in Visual Studio Code using `File` > `Open Folder`.
+
 #### Configure the pipeline
 
 #### Run the pipeline
-
-First open the pipeline folder in Visual Studio Code (`File` > `Open Folder`).
 
 Run the pipeline using the following command:
 

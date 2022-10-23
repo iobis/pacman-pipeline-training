@@ -54,22 +54,6 @@ df
 
 ## Exploratory data analysis
 
-### TRIAL PHYLOSEQ
-
-```{r message=FALSE, warning=FALSE}
-df_phylum <- physeq %>%
-  tax_glom(taxrank = "phylum") %>%
-  transform_sample_counts(function(x) { x / sum(x) }) %>%
-  psmelt() %>%
-  filter(Abundance > 0.02) %>%
-  arrange(phylum)   
-
-
-ggplot(df_phylum, aes(x = Sample, y = Abundance, fill = phylum)) + 
-  geom_bar(stat = "identity")
-
-```
-
 ### Abundance by sample type and phylum
 
 ```{r message=FALSE, warning=FALSE}
