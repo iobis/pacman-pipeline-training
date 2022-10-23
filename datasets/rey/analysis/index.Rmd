@@ -7,7 +7,7 @@ output: (function(...) {
 editor_options: 
   chunk_output_type: console
 knit: (function(inputFile, encoding) {
-  rmarkdown::render(inputFile, encoding = encoding, output_dir = "docs") })  
+  rmarkdown::render(inputFile, encoding = encoding, output_file = "../../../docs/rey_analysis.html") })  
 ---
 
 <style>
