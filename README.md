@@ -4,12 +4,15 @@ This repository contains the training materials for the PacMAN bioinformatics pi
 
 - [Bioinformatics pipeline tutorial](tutorial.md)
 - [R crash course]()
-- [Data analysis tutorial]()
-- [Setting up a shared server for training](server_setup.md) (for trainers)
+- [Data analysis tutorial](https://iobis.github.io/pacman-pipeline-training/rey_analysis.html)
 
 ## Example datasets
 
 - Rey et al. 2020. [Considerations for metabarcoding-based port biological baseline surveys aimed at marine nonindigenous species monitoring and risk assessments](datasets/rey)
+
+## Trainer resources
+
+- [Setting up a shared server for training](server_setup.md)
 
 ## Other resources
 

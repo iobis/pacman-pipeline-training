@@ -87,11 +87,19 @@ In this optional step, BLASTn is used against a local copy of the full NCBI nt (
 
 [BASTA](https://github.com/timkahlke/BASTA) is used to assign taxonomies based on the Last Common Ancestor (LCA) of the best hits.
 
+### LSIDs
+
+During this step, taxon names are matched with the [World Register of Marine Species](https://www.marinespecies.org/) (WoRMS).
+
 ### Darwin Core
 
-...
+In this step, Darwin Core aligned data tables are generated from the pipeline results. This includes a [Occurrence](https://rs.gbif.org/core/dwc_occurrence_2022-02-02.xml) table (which also has some sampling event related metadata), and a [DNADerivedData](https://rs.gbif.org/extension/gbif/1.0/dna_derived_data_2022-02-23.xml) table which contains many terms from the GSC's [MIxS standard](https://github.com/GenomicsStandardsConsortium/mixs). These tables can be bundled into a Darwin Core Archive for submission to OBIS.
 
-Results are also exported as a phyloseq object.
+Results are also exported as a phyloseq object `phyloseq_object.rds` which can easily be read into R for analysis.
+
+### Report
+
+In the final step, a HTML report summarizing all steps is generated.
 
 ## Running the pipeline
 ### Installation instructions for Windows
