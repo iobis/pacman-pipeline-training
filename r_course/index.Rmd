@@ -142,6 +142,22 @@ y
 
 ### Subsetting vectors
 
+Vectors can be subsetted using indices in square brackets:
+
+```{r message=FALSE, warning=FALSE, collapse=TRUE}
+x[1]
+x[1:3]
+x[c(5, 4, 3)]
+```
+
+Another option is to use conditional subsetting:
+
+```{r message=FALSE, warning=FALSE, collapse=TRUE}
+selection <- y > 0.95
+selection
+y[selection]
+```
+
 ### Data frames
 
 Data frames are table like structures. They can be created from vectors:
@@ -156,9 +172,51 @@ mountains <- data.frame(
 mountains
 ```
 
+Display the structure of a data frame with `str()`:
+
+```{r message=FALSE, warning=FALSE, collapse=TRUE}
+str(mountains)
+```
+
 ### Subsetting data frames
 
+Subsetting data frames also works with indices in square brackets, but now in two dimensions (rows and columns):
+
+```{r message=FALSE, warning=FALSE, collapse=TRUE}
+mountains[1, 1]
+mountains[1,]
+mountains[,1]
+```
+
+Alternatively, use column names, either in square brackets or with the `$` operator: 
+
+```{r message=FALSE, warning=FALSE, collapse=TRUE}
+mountains[,"name"]
+mountains[1, "name"]
+mountains$name
+mountains$name[1]
+```
+
 ### Missing data
+
+Missing data in R is represented by `NA`:
+
+```{r message=FALSE, warning=FALSE, collapse=TRUE}
+heights <- c(2, 5, NA, NA, 8)
+```
+
+Some functions have a `na.rm` argument to ignore missing values:
+
+```{r message=FALSE, warning=FALSE, collapse=TRUE}
+mean(heights)
+mean(heights, na.rm = TRUE)
+```
+
+To remove missing values from a vector, use `na.omit()`:
+
+```{r message=FALSE, warning=FALSE, collapse=TRUE}
+na.omit(heights)
+```
 
 ### Packages
 
@@ -215,7 +273,21 @@ This is a rather basic graph, but [the possibilities are endless](https://exts.g
 
 ## Input and output
 
+R has a number of built-in functions for reading files, such as `read.table()` and `read.csv()` for tabular data, and `readLines()` for reading text files. In addition, packages exist for reading these and other file types, such as `readr` for tabular data, `xlsx` for reading Excel spreadsheets, `arrow` for reading Parquet files, `sf` for reading geospatial datasets, `ncdf4` for reading NetCDF, and `seqinr` for reading fasta files. Analogous functions exist for writing files.
+
+R also has two native file formats for reading and writing objects: RData files (multiple objects) and RDS files (single object).
+
+```{r message=FALSE, warning=FALSE, collapse=TRUE}
+save(x, y, file = "xy.rda")
+load("xy.rda")
+
+saveRDS(x, file = "x.rds") 
+x <- readRDS("x.rds")
+```
+
 ## The Tidyverse
+
+To do.
 
 ## Style guides
 
