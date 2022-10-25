@@ -271,7 +271,7 @@ To actually run the pipeline, execute again without `--dryrun`.
 
 ## Analysis of the pipeline results
 
-To do.
+Continue to [Rey et al. 2020 data analysis](https://iobis.github.io/pacman-pipeline-training/rey_analysis.html).
 
 [^1]: Nelly Sélem Mojica; Diego Garfias Gallegos; Claudia Zirión Martínez; Jesús Abraham Avelar Rivas; Aaron Jaime Espinosa; Abel Lovaco Flores; Tania Vanessa Arellano Fernandez (2022, Jan). Metagenomics for Software Carpentry lesson, Jan 2022. Zenodo. <https://doi.org/10.5281/zenodo.4285900>
 
