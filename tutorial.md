@@ -1,5 +1,15 @@
 # PacMAN bioinformatics pipeline tutorial
 
+Contents:
+
+- [Pipeline steps](#pipeline-steps)
+- [Running the pipeline](#running-the-pipeline)
+  - [Installation instructions for Windows](#installation-instructions-for-windows)
+  - [Configure and run the pipeline](#configure-and-run-the-pipeline)
+- [Analysis of the pipeline results](#analysis-of-the-pipeline-results)
+
+---
+
 The PacMAN bioinformatics pipeline has been developed as an open source project at https://github.com/iobis/PacMAN-pipeline. The pipeline takes raw CO1 reads as input and converts them to Darwin Core aligned species occurrence tables ready for ingestion into OBIS.
 
 In this tutorial we will use the PacMAN pipeline to analyze sequence data from Rey et al. 2020 ([Considerations for metabarcoding-based port biological baseline surveys aimed at marine nonindigenous species monitoring and risk assessments](https://doi.org/10.1002/ece3.6071)). In this study, zooplankton, water, sediment, and biofouling samples have been collected from four sites in the port of Bilbao (Spain) for metabarcoding. The protocols used to collect and analyze the samples are similar to those used in the PacMAN project.
@@ -61,11 +71,11 @@ DADA2 will generate sample based and aggregate quality profiles. Let's take a lo
 
 In the next step, ASVs are inferred from the cleaned up raw reads. This involves training the error model, dereplication, sample inference, and merging the forward and reverse reads to obtain the full sequences. This step also removes chimeric sequences (artifact sequences formed from two or more biological sequences, for example during PCR).
 
-## Taxonomic annotation
+### Taxonomic annotation
 
 In this step we assign taxonomy by aligning our sequences with sequences in the reference tool. This will be done using [Bowtie2](https://bowtie-bio.sourceforge.net/bowtie2/index.shtml).
 
-### Bowtie2
+#### Bowtie2
 
 In the PacMAN pipeline, a Bowtie2 database can either be provided, or provisioned by a dedicated build step. In this case we build a database based on the [MIDORI2 reference database](http://www.reference-midori.info/)[^3]. MIDORI2 is built from GenBank and contains curated sequences of thirteen protein-coding and two ribosomal RNA mitochondrial genes. MIDORI2 covers all eukaryotes, including fungi, green algae and land plants, other multicellular algal groups, and diverse protist lineages. The database is updated approximately every two months with version numbers corresponding to each new GenBank release.
 
@@ -75,19 +85,19 @@ Figure from Leray et al. 2022[^3].
 
 By default, the pipeline is configured so that Bowtie2 uses the `--very-sensitive` preset (slow but more accurate) and finds up to 100 distinct alignments. The alignments are exported as SAM files.
 
-### BLCA
+#### BLCA
 
 In this step, a Bayesian Least Common Ancestor (BLCA) algorithm is used to infer taxonomy from the best distinct alignments provided by Bowtie2.
 
 An additional filter step removes any assignments that have a likelihood level below the configured cutoff, to ensure reliable assigments.
 
-### BLAST and LCA
+#### BLAST and LCA
 
 In this optional step, BLASTn is used against a local copy of the full NCBI nt (nucleotide) database to attempt to further annotate unclassified sequences.
 
 [BASTA](https://github.com/timkahlke/BASTA) is used to assign taxonomies based on the Last Common Ancestor (LCA) of the best hits.
 
-### LSIDs
+#### LSIDs
 
 During this step, taxon names are matched with the [World Register of Marine Species](https://www.marinespecies.org/) (WoRMS).
 
