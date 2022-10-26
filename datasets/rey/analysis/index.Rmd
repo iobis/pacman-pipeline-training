@@ -24,7 +24,7 @@ img { box-shadow: none !important; border: 0px !important; }
 
 ## Running this notebook
 
-To do.
+To run run this notebook in its entirety, clone or download the [iobis/pacman-pipeline-training repository](https://github.com/iobis/pacman-pipeline-training). The notebook can be found in the `datasets/rey/analysis` directory.
 
 ## Importing data
 
@@ -40,13 +40,15 @@ physeq <- readRDS("../results_noblast/phyloseq_object.rds")
 physeq
 ```
 
-While we can access these tables individually, the phyloseq package also has a function `psmelt()` to convert the `phyloseq` object into a single large data frame:
+While we can access these tables individually (for example using `physeq@sam_data`), the phyloseq package also has a function `psmelt()` to convert the `phyloseq` object into a single large data frame:
 
 ```{r message=FALSE, warning=FALSE}
 library(dplyr)
 
 df <- psmelt(physeq) %>%
-  mutate_if(is.character, list(~na_if(., ""))) %>%
+  # convert empty strings to NA across all character columns
+  mutate_if(is.character, ~na_if(., "")) %>%
+  # convert to tibble for prettier printing
   as_tibble()
 
 df
@@ -54,89 +56,98 @@ df
 
 ## Exploratory data analysis
 
+### Abundance by phylum
+
+Let's first determine which are the most abundant phyla across all samples. We will use this information to bin the less abundant phyla into a category `Other` for simplifying some of our graphics.
+
+```{r message=FALSE, warning=FALSE}
+stats_phyla <- df %>%
+  group_by(phylum) %>%
+  summarize(abundance = sum(Abundance)) %>%
+  arrange(desc(abundance))
+
+top_phyla <- head(na.omit(stats_phyla$phylum), 8)
+top_phyla
+```
+
+Now create a color scale:
+
+```{r message=FALSE, warning=FALSE}
+phylum_colors <- RColorBrewer::brewer.pal(9, "Spectral")
+names(phylum_colors) <- c(top_phyla, "Other")
+phylum_colors
+```
+
+And add a new column with binned phyla:
+
+```{r message=FALSE, warning=FALSE}
+df <- df %>%
+  mutate(phylum_binned = ifelse(is.na(phylum) | phylum %in% top_phyla, phylum, "Other")) %>%
+  mutate(phylum_binned = factor(phylum_binned, levels = c(top_phyla, "Other")))
+```
+
 ### Abundance by sample type and phylum
+
+First list the abundance by phylum and sample type:
 
 ```{r message=FALSE, warning=FALSE}
 library(tidyr)
 
-stats <- df %>%
+stats_type_phylum <- df %>%
   group_by(eventRemarks, phylum) %>%
   summarize(abundance = sum(Abundance))
 
-spread(stats, eventRemarks, abundance) %>%
+spread(stats_type_phylum, eventRemarks, abundance) %>%
   mutate(total = `settlement plates` + `filtered water`) %>%
   arrange(desc(total)) %>%
   knitr::kable()
 ```
 
+Now create a graph using the binned phyla:
+
 ```{r message=FALSE, warning=FALSE}
 library(ggplot2)
 
-stats_simplified <- stats %>%
-  mutate(
-    phylum = case_when(phylum = abundance < 5000 ~ "Other", TRUE ~ phylum)
-  ) %>%
+stats_type_phylum <- df %>%
+  # calculate total abundance by sample type
   group_by(eventRemarks) %>%
-  mutate(abundance = abundance / sum(abundance)) %>%
-  group_by(eventRemarks, phylum) %>%
+  mutate(abundance = Abundance / sum(Abundance)) %>%
+  group_by(eventRemarks, phylum_binned) %>%
   summarize(abundance = sum(abundance))
   
 ggplot() +
-  geom_bar(data = stats_simplified, aes(y = eventRemarks, fill = phylum, x = abundance), stat = "identity") +
-  scale_fill_brewer(palette = "Spectral", na.value = "#eeeeee") + theme_minimal()
+  geom_bar(data = stats_type_phylum, aes(y = eventRemarks, fill = phylum_binned, x = abundance), stat = "identity") +
+  scale_fill_manual(values = phylum_colors, na.value = "#eeeeee") +
+  theme_minimal()
 ```
 
 ### Abundance (reads) by sample and phylum
 
 ```{r message=FALSE, warning=FALSE}
-stats <- df %>%
-  rename(sample = Sample) %>%
-  group_by(sample, eventRemarks, phylum) %>%
-  summarize(abundance = sum(Abundance))
+stats_sample_phylum <- df %>%
+  # calculate total abundance by sample type
+  group_by(Sample) %>%
+  mutate(relative_abundance = Abundance / sum(Abundance)) %>%
+  group_by(Sample, eventRemarks, phylum_binned) %>%
+  summarize(relative_abundance = sum(relative_abundance), abundance = sum(Abundance))
+```
 
-stats_simplified <- stats %>%
-  mutate(
-    phylum = case_when(phylum = abundance < 2000 ~ "Other", TRUE ~ phylum)
-  ) %>%
-  group_by(sample) %>%
-  mutate(relative_abundance = abundance / sum(abundance)) %>%
-  group_by(sample, eventRemarks, phylum) %>%
-  summarize(abundance = sum(abundance), relative_abundance = sum(relative_abundance))
-  
+Absolute reads abundance:
+
+```{r message=FALSE, warning=FALSE}
 ggplot() +
-  geom_bar(data = stats_simplified, aes(y = sample, fill = phylum, x = relative_abundance), stat = "identity") +
-  scale_fill_brewer(palette = "Spectral", na.value = "#eeeeee") +
+  geom_bar(data = stats_sample_phylum, aes(y = Sample, fill = phylum_binned, x = abundance), stat = "identity") +
+  scale_fill_manual(values = phylum_colors, na.value = "#eeeeee") +
   theme_minimal() +
   theme(panel.grid.major.y = element_blank(), panel.grid.minor.y = element_blank())
 ```
 
-```{r message=FALSE, warning=FALSE}
-ggplot() +
-  geom_bar(data = stats_simplified, aes(y = sample, fill = phylum, x = abundance), stat = "identity") +
-  scale_fill_brewer(palette = "Spectral", na.value = "#eeeeee") +
-  theme_minimal() +
-  theme(panel.grid.major.y = element_blank(), panel.grid.minor.y = element_blank())
-```
-
-### Diversity (ASVs) by sample and phylum
+Relative reads abundance:
 
 ```{r message=FALSE, warning=FALSE}
-stats <- df %>%
-  filter(Abundance > 0) %>%
-  rename(sample = Sample) %>%
-  group_by(sample, eventRemarks, phylum) %>%
-  summarize(asvs = n())
-
-stats_simplified <- stats %>%
-  mutate(
-    phylum = case_when(phylum = asvs < 16 ~ "Other", TRUE ~ phylum)
-  ) %>%
-  group_by(sample, eventRemarks, phylum) %>%
-  summarize(asvs = sum(asvs))
-  
 ggplot() +
-  geom_bar(data = stats_simplified, aes(y = sample, fill = phylum, x = asvs), stat = "identity") +
-  scale_fill_brewer(palette = "Spectral", na.value = "#eeeeee") +
+  geom_bar(data = stats_sample_phylum, aes(y = Sample, fill = phylum_binned, x = relative_abundance), stat = "identity") +
+  scale_fill_manual(values = phylum_colors, na.value = "#eeeeee") +
   theme_minimal() +
   theme(panel.grid.major.y = element_blank(), panel.grid.minor.y = element_blank())
 ```
@@ -205,8 +216,8 @@ plot_ordination(physeq = physeq, ordination = ord, type = "samples", color = "ev
   geom_text(aes(label = materialSampleID), alpha = 0.7, size = 3, vjust = 2) +
   stat_ellipse(aes(group = eventRemarks)) +
   scale_color_brewer(palette = "Set1") +
+  scale_shape(solid = TRUE) +
   theme_classic()
 
 # todo: Canonical analysis of principal coordinates
-
 ```

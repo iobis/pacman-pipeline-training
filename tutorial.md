@@ -12,7 +12,7 @@ Contents:
 
 The PacMAN bioinformatics pipeline has been developed as an open source project at https://github.com/iobis/PacMAN-pipeline. The pipeline takes raw CO1 reads as input and converts them to Darwin Core aligned species occurrence tables ready for ingestion into OBIS.
 
-In this tutorial we will use the PacMAN pipeline to analyze sequence data from Rey et al. 2020 ([Considerations for metabarcoding-based port biological baseline surveys aimed at marine nonindigenous species monitoring and risk assessments](https://doi.org/10.1002/ece3.6071)). In this study, zooplankton, water, sediment, and biofouling samples have been collected from four sites in the port of Bilbao (Spain) for metabarcoding. The protocols used to collect and analyze the samples are similar to those used in the PacMAN project.
+In this tutorial we will use the PacMAN pipeline to analyze sequence data from Rey et al. 2020 ([Considerations for metabarcoding-based port biological baseline surveys aimed at marine nonindigenous species monitoring and risk assessments](https://doi.org/10.1002/ece3.6071)). In this study, zooplankton, water, sediment, and biofouling samples have been collected from four sites in the port of Bilbao (Spain) for metabarcoding. Additional water samples have been collected in Vigo and A Coruña. The protocols used to collect and analyze the samples are similar to those used in the PacMAN project.
 
 Before diving into the data and the pipeline software, let's first take a look at the individual steps that make up the pipeline.
 
