@@ -216,7 +216,7 @@ To do.
 
 To do.
 
-## Multidimensional scaling
+## Multidimensional scaling with phyloseq
 
 Phyloseq's `ordinate()` function allows us to do MultiDimensional Scaling (MDS) or Principal Coordinate Analysis (PCoA) on our dataset. The default for this function is to use [Bray-Curtis Dissimilarity](https://en.wikipedia.org/wiki/Bray%E2%80%93Curtis_dissimilarity) to calculate a distance matrix.
 
@@ -230,11 +230,54 @@ plot_ordination(physeq = physeq, ordination = ord, type = "samples", color = "ev
   scale_color_brewer(palette = "Set1") +
   scale_shape(solid = TRUE) +
   theme_classic()
+```
 
+We can also add taxa to the ordination plot, but styling this is a bit awkward as samples and taxa are treated as a single dataset.
+
+```{r message=FALSE, warning=FALSE}
 plot_ordination(physeq = subset_taxa(physeq, !is.na(phylum)), ordination = ord, type = "biplot", color = "phylum_binned") +
   scale_color_manual(values = phylum_colors, na.value = "#000000") +
   geom_text(aes(label = materialSampleID), alpha = 0.7, size = 3, vjust = 2) +
   theme_classic()
 ```
 
-## Principal Component Analysis
+## Non-metric MDS (NMDS) with phyloseq
+
+Another ordination method is non-metric MDS (NMDS). Let's try NMDS with our dataset aggregated at the species level, and plot the most abundant species together with the sites.
+
+First aggregates the `phyloseq` object to the species level:
+
+```{r message=FALSE, warning=FALSE}
+physeq_species <- tax_glom(physeq, taxrank = "species", NArm = TRUE, bad_empty = c(NA, ""))
+```
+
+Then perform the ordination with method `NMDS`:
+
+```{r message=FALSE, warning=FALSE, results="hide"}
+ord_species <- ordinate(physeq_species, method = "NMDS", distance = "bray")
+```
+
+Extract the NMDS values for the sites and species, and join with the relevant tables from the `phyloseq` object to get the necessary metadata for plotting (such as species name, locality, and sample type):
+
+```{r message=FALSE, warning=FALSE}
+sites <- ord_species$points %>%
+  as.data.frame() %>%
+  tibble::rownames_to_column("site") %>%
+  inner_join(physeq_species@sam_data %>% as.data.frame() %>% tibble::rownames_to_column("site"), by = "site")
+
+species <- ord_species$species %>%
+  as.data.frame() %>%
+  tibble::rownames_to_column("asv") %>%
+  left_join(physeq_species@tax_table %>% as.data.frame() %>% tibble::rownames_to_column("asv"), by = "asv") %>%
+  filter(species %in% top_species$species)
+```
+
+```{r message=FALSE, warning=FALSE}
+ggplot() +
+  geom_segment(data = species, aes(x = 0, y = 0, xend = MDS1, yend = MDS2), arrow = arrow(length = unit(2, "mm")), color = "#aaaaaa") +
+  geom_point(data = sites, aes(MDS1, MDS2, color = eventRemarks, shape = locality), size = 3, stroke = 1.5) +
+  geom_text(data = species, aes(MDS1, MDS2, label = species), size = 3, vjust = "outward") +
+  scale_color_brewer(palette = "Set1") +
+  scale_shape(solid = FALSE) +
+  theme_classic()
+```
