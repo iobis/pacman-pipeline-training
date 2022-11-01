@@ -14,14 +14,6 @@ knit: (function(inputFile, encoding) {
 img { box-shadow: none !important; border: 0px !important; }
 </style>
 
-## Resources
-
-- https://deneflab.github.io/MicrobeMiseq/demos/mothur_2_phyloseq.html
-- https://joey711.github.io/phyloseq/plot_ordination-examples.html
-- https://david-barnett.github.io/microViz/articles/web-only/ordination.html
-- https://www.gdc-docs.ethz.ch/MDA/handouts/MDA20_PhyloseqFormation_Mahendra_Mariadassou.pdf
-- http://rstudio-pubs-static.s3.amazonaws.com/266780_cac4994322494658904507a7606b1dd8.html
-
 ## Running this notebook
 
 To run run this notebook in its entirety, clone or download the [iobis/pacman-pipeline-training repository](https://github.com/iobis/pacman-pipeline-training). The notebook can be found in the `datasets/rey/analysis` directory.
