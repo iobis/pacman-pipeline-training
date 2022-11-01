@@ -2,6 +2,7 @@
 
 This repository contains the training materials for the PacMAN bioinformatics pipeline:
 
+- [Data managemebt slides](https://iobis.github.io/pacman-pipeline-training/data_management_slides.html)
 - [Bioinformatics pipeline tutorial](tutorial.md)
 - [R crash course]()
 - [Data analysis tutorial](https://iobis.github.io/pacman-pipeline-training/rey_analysis.html)
