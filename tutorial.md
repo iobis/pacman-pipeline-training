@@ -263,7 +263,7 @@ Dry run the pipeline using the following commands:
 
 ```
 conda activate snakemake
-snakemake --use-conda --configfile ./config/config.yaml --rerun-incomplete --printshellcmds --cores 2 --dryrun
+snakemake --use-conda --configfile ./config/config_rey_noblast_2samples.yaml --rerun-incomplete --printshellcmds --cores 1 --dryrun
 ```
 
 This has the following flags:
