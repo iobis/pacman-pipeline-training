@@ -3,10 +3,8 @@
 *.fastq
 *.fastq.gz
 datasets/rey/subset
-datasets/rey/results*
 *.Rproj
 .Rproj.user
-*.rds
 *.rda
 !SRR8759981_1.fastq.gz
 !SRR8759981_2.fastq.gz

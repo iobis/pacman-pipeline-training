@@ -138,6 +138,8 @@ wsl --install -d Ubuntu
 wsl -l -v
 ```
 
+You may get a message to install the Linux kernel update package, follow the instructions.
+
 #### Install conda
 
 Now open the Ubuntu terminal from the start menu and run the commands below to download and install Miniconda. You will be asked first to create an user account on Ubuntu.
@@ -149,6 +151,8 @@ wget https://repo.anaconda.com/miniconda/Miniconda3-py39_4.12.0-Linux-x86_64.sh
 chmod +x Miniconda3-py39_4.12.0-Linux-x86_64.sh
 ./Miniconda3-py39_4.12.0-Linux-x86_64.sh
 ```
+
+At the end of the installation procedure, enter `yes` when asked to run `conda init`.
 
 After installing Miniconda, close the terminal and start a new one.
 
@@ -169,16 +173,19 @@ Next, install Snakemake:
 mamba create -c conda-forge -c bioconda -n snakemake snakemake
 ```
 
-#### Install Visual Studio Code
+#### Install and start Visual Studio Code
 
-Download Visual Studio Code from <https://code.visualstudio.com/Download>.
+Download Visual Studio Code from <https://code.visualstudio.com/Download> and install. The open Visual Studio Code from the Ubuntu terminal by typing:
+
+`code`
+
+In Visual Studio Code, open the Desktop folder (`File` > `Open Folder`). Then open the terminal panel (`Terminal` > `New Terminal`). Use the `+` button in the terminal panel to open a new `Ubuntu (WSL)`
 
 #### Download the pipeline
 
-Clone the pipeline repository to your machine:
+Still in the WSL terminal, clone the pipeline repository to your machine:
 
 ```
-cd Desktop
 git clone https://github.com/iobis/PacMAN-pipeline.git
 ```
 
