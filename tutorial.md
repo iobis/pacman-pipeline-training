@@ -191,12 +191,12 @@ git clone https://github.com/iobis/PacMAN-pipeline.git
 
 #### Download the reference database
 
-Download and extract the following files to `data/databases/midori` (create if necessary):
+In case you want to build the Bowtie2 database yourself, download and extract the following files to `data/databases/midori` (create if necessary):
 
 - http://www.reference-midori.info/forceDownload.php?fName=download/Databases/GenBank246/QIIME_sp/uniq/MIDORI_UNIQ_SP_NUC_GB246_CO1_QIIME.fasta.gz
 - http://www.reference-midori.info/forceDownload.php?fName=download/Databases/GenBank246/QIIME_sp/uniq/MIDORI_UNIQ_SP_NUC_GB246_CO1_QIIME.taxon.gz
 
-Another option is to download the prebuilt Bowtie2 database. Download and extract the following file to `resources/bowtie2_dbs`:
+:fire: Another option is to download the prebuilt Bowtie2 database. This is the preferred option for the on-site training course. Download and extract the following file to `resources/bowtie2_dbs`:
 
 - https://datasets.obis.org/shared/MIDORI_UNIQ_GB246_CO1.zip
 
@@ -259,10 +259,11 @@ The sample data temlate file `config/sample_data_template_rey_2samples.csv` cont
 
 #### Run the pipeline
 
-Dry run the pipeline using the following command:
+Dry run the pipeline using the following commands:
 
 ```
-snakemake --use-conda --configfile ./config/config.yaml --rerun-incomplete --printshellcmds --cores 2 -n
+conda activate snakemake
+snakemake --use-conda --configfile ./config/config.yaml --rerun-incomplete --printshellcmds --cores 2 --dryrun
 ```
 
 This has the following flags:
