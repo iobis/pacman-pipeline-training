@@ -54,9 +54,9 @@ weight <- 45 # used to be 32
 The objects we just created have different types:
 
 ```{r message=FALSE, warning=FALSE, collapse=TRUE}
-class(weight)
-class(color)
-class(edible)
+typeof(weight)
+typeof(color)
+typeof(edible)
 ```
 
 ### Math
@@ -195,6 +195,16 @@ mountains[,"name"]
 mountains[1, "name"]
 mountains$name
 mountains$name[1]
+```
+
+### Factors
+
+Categorical variables can be converted to factors:
+
+```{r message=FALSE, warning=FALSE, collapse=TRUE}
+mountains$name
+factor(mountains$name)
+typeof(factor(mountains$name))
 ```
 
 ### Missing data

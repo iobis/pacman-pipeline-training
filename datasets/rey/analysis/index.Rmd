@@ -10,9 +10,19 @@ knit: (function(inputFile, encoding) {
   rmarkdown::render(inputFile, encoding = encoding, output_file = "../../../docs/rey_analysis.html") })  
 ---
 
+<!--
+- https://deneflab.github.io/MicrobeMiseq/demos/mothur_2_phyloseq.html
+- https://joey711.github.io/phyloseq/plot_ordination-examples.html
+- https://david-barnett.github.io/microViz/articles/web-only/ordination.html
+- https://www.gdc-docs.ethz.ch/MDA/handouts/MDA20_PhyloseqFormation_Mahendra_Mariadassou.pdf
+- http://rstudio-pubs-static.s3.amazonaws.com/266780_cac4994322494658904507a7606b1dd8.html
+-->
+
 <style>
 img { box-shadow: none !important; border: 0px !important; }
 </style>
+
+In this notebook we will analyze PacMAN pipeline results for a subset of COI samples from Rey, A., Basurko, O. C., &#38; Rodriguez-Ezpeleta, N. (2020). Considerations for metabarcoding-based port biological baseline surveys aimed at marine nonindigenous species monitoring and risk assessments. Ecology and Evolution, 10(5), 2452–2465. https://doi.org/10.1002/ece3.6071
 
 ## Running this notebook
 
@@ -20,11 +30,23 @@ To run run this notebook in its entirety, clone or download the [iobis/pacman-pi
 
 ## Importing data
 
-The PacMAN pipeline exports results as a `phyloseq` object which can be imported into R for analysis. This is how `phyloseq` objects are structured:
+The PacMAN pipeline exports results as a `phyloseq` object which can be imported into R for analysis. First install the phyloseq package:
+
+```{r message=FALSE, warning=FALSE, eval=FALSE}
+install.packages("phyloseq")
+```
+
+This is how `phyloseq` objects are structured:
 
 ![Figure from <https://joey711.github.io/phyloseq/import-data.html>](phyloseq.png)
 
-Read the `phyloseq` object and verify that we have a OTU table, a sample table, and a taxonomy table. A phylogenetic tree has not been calculated so that slot is empty.
+Read the `phyloseq` object and verify that we have:
+
+- a OTU table
+- a sample table
+- a taxonomy table
+
+A phylogenetic tree has not been calculated so that slot is empty.
 
 ```{r message=FALSE, warning=FALSE}
 physeq <- readRDS("../results_noblast/phyloseq_object.rds")
@@ -32,10 +54,11 @@ physeq <- readRDS("../results_noblast/phyloseq_object.rds")
 physeq
 ```
 
-While we can access these tables individually (for example using `physeq@sam_data`), the phyloseq package also has a function `psmelt()` to convert the `phyloseq` object into a single large data frame:
+While we can access these tables individually (for example using `physeq@sam_data` or `sample_data(physeq)`), the phyloseq package also has a function `psmelt()` to convert the `phyloseq` object into a single large data frame:
 
 ```{r message=FALSE, warning=FALSE}
 library(dplyr)
+library(phyloseq)
 
 df <- psmelt(physeq) %>%
   # convert empty strings to NA across all character columns
@@ -62,7 +85,7 @@ top_phyla <- head(na.omit(stats_phyla$phylum), 8)
 top_phyla
 ```
 
-Now create a color scale:
+Now create a color scale for these phyla using the `RColorBrewer` package:
 
 ```{r message=FALSE, warning=FALSE}
 phylum_colors <- RColorBrewer::brewer.pal(9, "Spectral")
@@ -185,7 +208,7 @@ ggplot() +
 
 ## Invasive species
 
-In this section we will check our results against the World Register of Introduced Marine Species (WRiMS). The repository contains a CSV file containing the LSIDs for all species in WRiMS.
+In this section we will check our results against the World Register of Introduced Marine Species (WRiMS). The repository contains a CSV file containing the LSIDs for all species in WRiMS. Read this CSV and use the LSIDs to only retain species from WRiMS.
 
 ```{r message=FALSE, warning=FALSE}
 wrims_lsids <- read.csv("wrims_lsids.csv")
@@ -200,15 +223,60 @@ invasives %>%
   rmarkdown::paged_table()
 ```
 
+## Alpha diversity
+
+Use `vegan::plot_richness()` to visualize the number of ASVs per sample:
+
+```{r message=FALSE, warning=FALSE}
+plot_richness(physeq, measures = c("Observed"), color = "eventRemarks")
+```
+
+The vegan package can also calculate a number of biodiversity indices. But keep in mind that some of these will use the reads abundance which does not necessarily correlate with actual abundance in terms of individuals, such as the Chao1 estimator which uses the numbers of singletons and doubletons to obtain a lower bound for the expected asymptotic species richness, or Shannon entropy which uses relative abundance.
+
+```{r message=FALSE, warning=FALSE}
+estimate_richness(physeq)
+```
+
 ## ASV accumulation curves
 
-To do.
+Rarefaction is an interpolation of species richness to smaller samples sizes to allow comparisons between samples.
 
-## Alpha and beta diversity
+```{r message=FALSE, warning=FALSE}
+vegan::rarecurve(t(otu_table(physeq)), step = 1000)
+```
 
-To do.
+Alternatively, run `vegan::rarefy()` for every sample and construct the graph yourself:
 
-## Multidimensional scaling with phyloseq
+```{r message=FALSE, warning=FALSE}
+community <- t(otu_table(physeq))
+
+curves <- purrr::map(physeq@sam_data$eventID, function(sample) {
+  community_row <- community[sample,]
+  sample_sizes <- seq(1000, sum(community_row), by = 1000)
+  rarefied <- vegan::rarefy(community_row, sample_sizes)
+  curve <- data.frame(
+    eventID = sample,
+    sample_size = sample_sizes,
+    asvs = as.numeric(rarefied)
+  ) %>%
+    left_join(physeq@sam_data, by = "eventID")
+}) %>%
+  bind_rows()
+
+samples <- curves %>%
+  group_by(eventID) %>%
+  summarize(sample_size = max(sample_size), asvs = max(asvs))
+
+ggplot() +
+  geom_line(data = curves %>% group_by(eventID), aes(x = sample_size, y = asvs, color = eventRemarks, group = eventID)) +
+  geom_label(data = samples, aes(sample_size, asvs, label = eventID), size = 2) +
+  scale_color_brewer(palette = "Set1") +
+  theme_classic()
+```
+
+## Beta diversity
+
+### Multidimensional scaling with phyloseq
 
 Phyloseq's `ordinate()` function allows us to do MultiDimensional Scaling (MDS) or Principal Coordinate Analysis (PCoA) on our dataset. The default for this function is to use [Bray-Curtis Dissimilarity](https://en.wikipedia.org/wiki/Bray%E2%80%93Curtis_dissimilarity) to calculate a distance matrix.
 
@@ -233,7 +301,7 @@ plot_ordination(physeq = subset_taxa(physeq, !is.na(phylum)), ordination = ord, 
   theme_classic()
 ```
 
-## Non-metric MDS (NMDS) with phyloseq
+### Non-metric MDS (NMDS) with phyloseq
 
 Another ordination method is non-metric MDS (NMDS). Let's try NMDS with our dataset aggregated at the species level, and plot the most abundant species together with the sites.
 
