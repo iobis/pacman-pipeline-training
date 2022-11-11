@@ -26,14 +26,19 @@ In this notebook we will analyze PacMAN pipeline results for a subset of COI sam
 
 ## Running this notebook
 
-To run run this notebook in its entirety, clone or download the [iobis/pacman-pipeline-training repository](https://github.com/iobis/pacman-pipeline-training). The notebook can be found in the `datasets/rey/analysis` directory.
+To run this notebook in its entirety or to have access to the data files used in this notebook, clone or download and extract the [iobis/pacman-pipeline-training repository](https://github.com/iobis/pacman-pipeline-training). The notebook can be found in the `datasets/rey/analysis` directory, open this directory in RStudio after downloading (`File` > `Open Project` or navigate to Desktop in the Files panel and select `More` > `Set As Working Directory`).
+
+If you have trouble locating the Desktop folder in RStudio, set your Desktop as the default working directory using `Tools` > `Global Options` > `Default working directory`.
 
 ## Importing data
 
-The PacMAN pipeline exports results as a `phyloseq` object which can be imported into R for analysis. First install the phyloseq package:
+The PacMAN pipeline exports results as a `phyloseq` object which can be imported into R for analysis. First install the phyloseq package from Bioconductor:
 
 ```{r message=FALSE, warning=FALSE, eval=FALSE}
-install.packages("phyloseq")
+if (!require("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+
+BiocManager::install("phyloseq")
 ```
 
 This is how `phyloseq` objects are structured:
