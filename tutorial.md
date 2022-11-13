@@ -2,6 +2,7 @@
 
 Contents:
 
+- [Pipeline architecture](#pipeline-architecture)
 - [Pipeline steps](#pipeline-steps)
 - [Running the pipeline](#running-the-pipeline)
   - [Installation instructions for Windows](#installation-instructions-for-windows)
@@ -14,7 +15,36 @@ The PacMAN bioinformatics pipeline has been developed as an open source project 
 
 In this tutorial we will use the PacMAN pipeline to analyze sequence data from Rey et al. 2020 ([Considerations for metabarcoding-based port biological baseline surveys aimed at marine nonindigenous species monitoring and risk assessments](https://doi.org/10.1002/ece3.6071)). In this study, zooplankton, water, sediment, and biofouling samples have been collected from four sites in the port of Bilbao (Spain) for metabarcoding. Additional water samples have been collected in Vigo and A Coruña. The protocols used to collect and analyze the samples are similar to those used in the PacMAN project.
 
-Before diving into the data and the pipeline software, let's first take a look at the individual steps that make up the pipeline.
+## Pipeline architecture
+
+The PacMAN bioinformatics pipeline consists of a sequence of data processing steps, which can be either scripts or commands for executing existing software tools.
+
+The pipeline steps are orchestrated using [Snakemake](https://snakemake.github.io/), which is a Python based workflow management system. A snakemake workflow if defined by a set of *rules*, where each rules defines how the step is executed, and what the input and output files are. Snakemake uses these input and output file specifications to determine in which order the steps needs to be executed. The rules are defined in a text file called the Snakefile.
+
+To make workflows portable and reproducible, Snakemake can execute each step in an isolated [Conda](https://docs.conda.io/en/latest/) environment. Conda is a package manager which was originally developed for Python, but it is now used for distributing packages for other languages as well, including R. Using Conda environments ensures that the steps use the exact same versions of software dependencies, whereever they are run.
+
+Here's an example of one of the steps in the pipeline Snakefile:
+
+```python
+rule fast_qc:
+    """
+    Runs QC on raw reads
+    """
+    input:
+        r1 = "results/{PROJECT}/samples/{samples}/rawdata/forward_reads/fw.fastq.gz",
+        r2 = "results/{PROJECT}/samples/{samples}/rawdata/reverse_reads/rv.fastq.gz"
+    output:
+        o1 = "results/{PROJECT}/samples/{samples}/qc/fw_fastqc.html",
+        o2 = "results/{PROJECT}/samples/{samples}/qc/rv_fastqc.html",
+        s1 = "results/{PROJECT}/samples/{samples}/qc/fw_fastqc.zip",
+        s2 = "results/{PROJECT}/samples/{samples}/qc/rv_fastqc.zip"
+    conda:
+        "envs/qc.yaml"
+    shell:
+        "fastqc {input.r1} {input.r2} -o results/{wildcards.PROJECT}/samples/{wildcards.samples}/qc/"
+```
+
+So this rule has two input files, four output files, a reference to a Conda environment which is defined in a yaml file, and a shell command. Notice that the file names and shell command use curly braces (`{}`) to access variables defined elsewhere in the Snakefile. Some of these variables come from a config file which is specified at the top of the Snakefile.
 
 ## Pipeline steps
 
