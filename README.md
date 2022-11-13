@@ -1,6 +1,12 @@
 # pacman-pipeline-training
 
-This repository contains the training materials for the PacMAN bioinformatics pipeline:
+This repository contains the materials for the PacMAN bioinformatics pipeline training on 18 November.
+
+| Time | Topic |
+| --- | --- |
+| 9:00 - 10:30 | Data management <br/> R crash course |
+| 11:00 - 13:00 | Bioinformatics pipeline |
+| 14:00 - 15:00 | Bioinformatics pipeline results <br/> Data analysis |
 
 - [Data management slides](https://iobis.github.io/pacman-pipeline-training/data_management_slides.html)
 - [Bioinformatics pipeline tutorial](tutorial.md)
