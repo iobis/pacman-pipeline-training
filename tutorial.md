@@ -46,6 +46,8 @@ rule fast_qc:
 
 So this rule has two input files, four output files, a reference to a Conda environment which is defined in a yaml file, and a shell command. Notice that the file names and shell command use curly braces (`{}`) to access variables defined elsewhere in the Snakefile. Some of these variables come from a config file which is specified at the top of the Snakefile.
 
+Before diving into the pipeline code, let's take a quick look at the main steps of the pipeline.
+
 ## Pipeline steps
 
 A schematic overview of the PacMAN pipeline and the files it generates can be found [here](https://github.com/iobis/PacMAN-pipeline/raw/master/documentation/diagram.png).
@@ -103,7 +105,7 @@ In the next step, ASVs are inferred from the cleaned up raw reads. This involves
 
 ### Taxonomic annotation
 
-In this step we assign taxonomy by aligning our sequences with sequences in the reference tool. This will be done using [Bowtie2](https://bowtie-bio.sourceforge.net/bowtie2/index.shtml).
+In this step we assign taxonomy by aligning our sequences with sequences in the reference database. This will be done using [Bowtie2](https://bowtie-bio.sourceforge.net/bowtie2/index.shtml), which uses Burrows-Wheeler indexing to create a fast and memory efficient aligner.
 
 #### Bowtie2
 
