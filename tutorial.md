@@ -21,7 +21,7 @@ The PacMAN bioinformatics pipeline consists of a sequence of data processing ste
 
 The pipeline steps are orchestrated using [Snakemake](https://snakemake.github.io/), which is a Python based workflow management system. A snakemake workflow if defined by a set of *rules*, where each rules defines how the step is executed, and what the input and output files are. Snakemake uses these input and output file specifications to determine in which order the steps needs to be executed. The rules are defined in a text file called the Snakefile.
 
-To make workflows portable and reproducible, Snakemake can execute each step in an isolated [Conda](https://docs.conda.io/en/latest/) environment. Conda is a package manager which was originally developed for Python, but it is now used for distributing packages for other languages as well, including R. Using Conda environments ensures that the steps use the exact same versions of software dependencies, whereever they are run.
+To make workflows portable and reproducible, Snakemake can execute each step in an isolated [conda](https://docs.conda.io/en/latest/) environment. Conda is a package manager which was originally developed for Python, but it is now used for distributing packages for other languages as well, including R. Using conda environments ensures that the steps use the exact same versions of software dependencies, whereever they are run.
 
 Here's an example of one of the steps in the pipeline Snakefile:
 
@@ -50,7 +50,9 @@ Before diving into the pipeline code, let's take a quick look at the main steps 
 
 ## Pipeline steps
 
-A schematic overview of the PacMAN pipeline and the files it generates can be found [here](https://github.com/iobis/PacMAN-pipeline/raw/master/documentation/diagram.png).
+A schematic overview of the PacMAN pipeline and the files it generates is available [here](https://github.com/iobis/PacMAN-pipeline/raw/master/documentation/diagram.png).
+
+![](https://github.com/iobis/PacMAN-pipeline/raw/master/documentation/diagram.png)
 
 ### Quality control
 
@@ -115,7 +117,7 @@ In the PacMAN pipeline, a Bowtie2 database can either be provided, or provisione
 
 Figure from Leray et al. 2022[^3].
 
-By default, the pipeline is configured so that Bowtie2 uses the `--very-sensitive` preset (slow but more accurate) and finds up to 100 distinct alignments. The alignments are exported as SAM files.
+By default, the pipeline is configured so that Bowtie2 uses the `--very-sensitive` preset (slow but more accurate) and finds up to 100 distinct alignments. The alignments are exported as Sequence Alignment Map (SAM) files.
 
 #### BLCA
 
@@ -172,6 +174,12 @@ wsl -l -v
 
 You may get a message to install the Linux kernel update package, follow the instructions.
 
+If the WSL version is listed as 1, convert to WSL 2 like this:
+
+```
+wsl --set-version Ubuntu-22.04 2
+```
+
 #### Install conda
 
 Now open the Ubuntu terminal from the start menu and run the commands below to download and install Miniconda. You will be asked first to create an user account on Ubuntu.
@@ -223,12 +231,14 @@ git clone https://github.com/iobis/PacMAN-pipeline.git
 
 #### Download the reference database
 
-In case you want to build the Bowtie2 database yourself, download and extract the following files to `data/databases/midori` (create if necessary):
+Download and extract the following files from the MIDORI website to `data/databases/midori` (create if necessary):
 
 - http://www.reference-midori.info/forceDownload.php?fName=download/Databases/GenBank246/QIIME_sp/uniq/MIDORI_UNIQ_SP_NUC_GB246_CO1_QIIME.fasta.gz
 - http://www.reference-midori.info/forceDownload.php?fName=download/Databases/GenBank246/QIIME_sp/uniq/MIDORI_UNIQ_SP_NUC_GB246_CO1_QIIME.taxon.gz
 
-:fire: Another option is to download the prebuilt Bowtie2 database. This is the preferred option for the on-site training course. Download and extract the following file to `resources/bowtie2_dbs`:
+In case the fasta file is not available from the source above, download it [here](https://datasets.obis.org/shared/midori.fasta.zip).
+
+:fire: Optionally download the prebuilt Bowtie2 database. This is the preferred option for the on-site training course because building the Bowtie2 database quite takes a bit of time. Download and extract the following file to `resources/bowtie2_dbs`:
 
 - https://datasets.obis.org/shared/MIDORI_UNIQ_GB246_CO1.zip
 
