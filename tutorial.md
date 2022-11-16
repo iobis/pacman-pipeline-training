@@ -174,7 +174,7 @@ wsl -l -v
 
 You may get a message to install the Linux kernel update package, follow the instructions.
 
-If the WSL version is listed as 1, convert to WSL 2 like this:
+If the WSL version is still listed as 1, convert to WSL 2 like this:
 
 ```
 wsl --set-version Ubuntu-22.04 2
@@ -182,7 +182,7 @@ wsl --set-version Ubuntu-22.04 2
 
 #### Install conda
 
-Now open the Ubuntu terminal from the start menu and run the commands below to download and install Miniconda. You will be asked first to create an user account on Ubuntu.
+Now open the Ubuntu terminal from the start menu and run the commands below to download and install Miniconda. If Ubuntu is not available in your start menu, just type `wsl` in `Command Prompt`. You will be asked first to create an user account on Ubuntu.
 
 ```
 sudo apt-get update
@@ -215,11 +215,13 @@ mamba create -c conda-forge -c bioconda -n snakemake snakemake
 
 #### Install and start Visual Studio Code
 
-Download Visual Studio Code from <https://code.visualstudio.com/Download> and install. The open Visual Studio Code from the Ubuntu terminal by typing:
+Download Visual Studio Code from <https://code.visualstudio.com/Download> and install. Then open Visual Studio Code from the Ubuntu terminal by typing:
 
 `code`
 
-In Visual Studio Code, open the Desktop folder (`File` > `Open Folder`). Then open the terminal panel (`Terminal` > `New Terminal`). Use the `+` button in the terminal panel to open a new `Ubuntu (WSL)`
+You may need to open a new WSL terminal for this. In Visual Studio Code, open the Desktop folder (`File` > `Open Folder`). If prompted, select `Yes, I trust the authors`.
+
+Then open the terminal panel (`Terminal` > `New Terminal`). Use the `+` button in the terminal panel to open a new `Ubuntu (WSL)`
 
 #### Download the pipeline
 
@@ -228,6 +230,8 @@ Still in the WSL terminal, clone the pipeline repository to your machine:
 ```
 git clone https://github.com/iobis/PacMAN-pipeline.git
 ```
+
+Now open the pipeline folder with `File` > `Open Folder`.
 
 #### Download the reference database
 
@@ -243,16 +247,6 @@ In case the fasta file is not available from the source above, download it [here
 - https://datasets.obis.org/shared/MIDORI_UNIQ_GB246_CO1.zip
 
 ### Configure and run the pipeline
-
-#### Open the pipeline in Visual Studio Code
-
-First open Visual Studio Code from WSL by starting a Ubuntu terminal and typing:
-
-```
-code
-```
-
-Visual Studio Code should start. Then open the pipeline folder in Visual Studio Code using `File` > `Open Folder`.
 
 #### Directory structure
 

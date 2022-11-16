@@ -15,24 +15,29 @@ pre {font-size: 0.4em; line-height: 1; padding: 1.5em; box-shadow: none; border-
 p { font-size: 0.9em; }
 </style>
 
-# PacMAN data management
+## OBIS, data standards, and data management
 
 ---
 
-## Open science
+### Ocean Biodiversity Information System (OBIS)
+
+- Established in 2000 as the data system for the Census of Marine Life
+- Since 2009 under IOC-UNESCO's International Oceanographic Data and Information (IODE) programme
+- 26 regional and 7 thematic nodes
+- Secretariat based in Ostend, Belgium
 
 ---
 
-![fit](../images/data_management/open_science_lifecycle.png)
+![bg](../images/data_management/secretariat.jpeg)
 
-<p class="caption">https://science.gc.ca</p>
+---
 
-<!--
-https://www.fosteropenscience.eu/learning/what-is-open-science
-https://science.gc.ca/site/science/en/open-science-helping-make-science-accessible-all-canadians
-https://www.nature.com/articles/sdata201618
-https://www.go-fair.org/fair-principles/fairification-process/
--->
+![bg](../images/data_management/nodes_map.png)
+
+---
+
+![bg fit](../images/data_management/species_atlantic_4.png)
+![bg fit](../images/data_management/species_west_pacific_4.png)
 
 ---
 
@@ -46,11 +51,12 @@ https://www.go-fair.org/fair-principles/fairification-process/
 - Make research transparent and reproducible
 - Create opportunities for collaboration
 - Incentive to improve data management and quality
-- Efficient use of resources, avoids repetition
+- More efficient use of resources
 - Greater impact and ROI
-- Support meta-analysis, discover trends
+- Support meta-analyses, trend discovery
 - Identify knowledge gaps
 - Required by funding agencies and journals
+
 ---
 
 ![bg 80%](../images/data_management/nature_careers_2.png)
@@ -58,32 +64,43 @@ https://www.go-fair.org/fair-principles/fairification-process/
 
 ---
 
-![bg fit 90%](../images/data_management/usecase_1.png)
-![bg fit 90%](../images/data_management/usecase_2.png)
-
----
-
-![bg fit 90%](../images/data_management/usecase_3.png)
-![bg fit 90%](../images/data_management/usecase_4.png)
-
----
-
-![bg fit 90%](../images/data_management/usecase_5.png)
 ![bg fit 90%](../images/data_management/usecase_6.png)
 
 ---
 
-![bg fit 90%](../images/data_management/usecase_7.png)
+![bg fit 80%](../images/data_management/usecase_4.png)
+
+---
+
 ![bg fit 90%](../images/data_management/usecase_8.png)
 
 ---
 
-![bg fit 90%](../images/data_management/usecase_9.png)
+![bg fit 80%](../images/data_management/usecase_3.png)
+
+---
+
 ![bg fit 90%](../images/data_management/usecase_10.png)
 
 ---
 
-### The FAIR Guiding Principles for scientific data management and stewardship
+![bg fit 90%](../images/data_management/usecase_1.png)
+
+---
+
+![bg fit 70%](../images/data_management/usecase_5.png)
+
+---
+
+![bg fit 85%](../images/data_management/usecase_7.png)
+
+---
+
+![bg fit 70%](../images/data_management/usecase_9.png)
+
+---
+
+#### The FAIR Guiding Principles for scientific data management and stewardship
 
 > There is an **urgent need to improve the infrastructure supporting the reuse of scholarly data**. A diverse set of stakeholders—representing academia, industry, funding agencies, and scholarly publishers—have come together to design and jointly endorse a concise and measureable set of principles that we refer to as the FAIR Data Principles. The intent is that these may act as a **guideline for those wishing to enhance the reusability of their data holdings**.
 
@@ -92,7 +109,7 @@ https://www.go-fair.org/fair-principles/fairification-process/
 ### Findable
 
 - (meta)data are assigned a **globally unique and persistent identifier**
-- data are described with **rich metadata**
+- data are described with rich metadata
 - metadata clearly and explicitly include the identifier of the data it describes
 - (meta)data are registered or **indexed in a searchable resource**
 
@@ -101,7 +118,7 @@ https://www.go-fair.org/fair-principles/fairification-process/
 ### Accessible
 
 - (meta)data are retrievable by their identifier using a **standardized communications protocol**
-- the protocol is open, free, and universally implementable
+- the **protocol is open, free**, and universally implementable
 - the protocol allows for an authentication and authorization procedure, where necessary
 - metadata are accessible, even when the data are no longer available
 
@@ -109,15 +126,15 @@ https://www.go-fair.org/fair-principles/fairification-process/
 
 ### Interoperable
 
-- (meta)data use a formal, accessible, shared, and broadly applicable language for knowledge representation.
-- (meta)data use vocabularies that follow FAIR principles
+- (meta)data use a formal, accessible, shared, and **broadly applicable language for knowledge representation**.
+- (meta)data use **vocabularies** that follow FAIR principles
 - (meta)data include qualified references to other (meta)data
 
 ---
 
 ### Reusable
 
-- meta(data) are richly described with a plurality of **accurate and relevant attributes**
+- meta(data) are richly described with a plurality of accurate and relevant attributes
 - (meta)data are released with a clear and accessible **data usage license**
 - (meta)data are associated with **detailed provenance**
 - (meta)data meet **domain-relevant community standards**
@@ -138,7 +155,7 @@ https://eml.ecoinformatics.org/
 
 ### Darwin Core
 
-> Darwin Core is a standard maintained by the Darwin Core Maintenance Interest Group. It includes a glossary of terms (in other contexts these might be called properties, elements, fields, columns, attributes, or concepts) intended to facilitate the sharing of information about biological diversity by providing identifiers, labels, and definitions.
+> Darwin Core is a standard maintained by the Darwin Core Maintenance Interest Group. It **includes a glossary of terms** (in other contexts these might be called properties, elements, fields, columns, attributes, or concepts) intended to facilitate the sharing of information about biological diversity by providing identifiers, labels, and definitions.
 
 https://dwc.tdwg.org/
 
@@ -146,9 +163,11 @@ https://dwc.tdwg.org/
 
 #### Quick reference guide
 
+https://dwc.tdwg.org/terms/
+
 ---
 
-![w:900](../images/data_management/quick_guide.png)
+![bg 80%](../images/data_management/quick_guide.png)
 
 ---
 
@@ -268,11 +287,24 @@ MULTIPOLYGON (((30 20, 45 40, 10 40, 30 20)),((15 5, 40 10, 10 20, 5 10, 15 5)))
 
 ---
 
-![bg 80%](../images/data_management/wkttool.png)
+![bg 85%](../images/data_management/wkttool.png)
 
 ---
 
 ##### Identifiers and references
+
+- `eventID`
+- `parentEventID`
+- `occurrenceID`
+- `datasetID    `
+- `fieldNumber`
+- `materialSampleID`
+- `institutionCode` and `institutionID`
+- `collectionCode` and `collectionID`
+- `catalogNumber`
+- `organismID`
+- `associatedReferences`
+- `bibliographicCitation`
 
 ---
 
@@ -289,6 +321,10 @@ MULTIPOLYGON (((30 20, 45 40, 10 40, 30 20)),((15 5, 40 10, 10 20, 5 10, 15 5)))
 ---
 
 #### Dataset structure
+
+---
+
+![w:800](../images/data_management/dwca.png)
 
 ---
 
@@ -460,6 +496,10 @@ https://docs.gbif.org/publishing-dna-derived-data/1.0/en/
 
 ---
 
+![bg 75%](../images/data_management/nvs.png)
+
+---
+
 #### BODC P01 Parameter Usage Vocabulary
 
 https://github.com/nvs-vocabs/P01
@@ -500,10 +540,6 @@ https://www.marinespecies.org/introduced/
 
 ---
 
-![bg](../images/data_management/nodes_map.png)
-
----
-
 ![bg 75%](../images/data_management/ipt_1.png)
 
 ---
@@ -516,11 +552,11 @@ https://www.marinespecies.org/introduced/
 
 ---
 
-![bg 75%](../images/data_management/ipt_4.png)
+![bg 75%](../images/data_management/ipt_5.png)
 
 ---
 
-![bg 75%](../images/data_management/ipt_5.png)
+![bg 75%](../images/data_management/ipt_4.png)
 
 ---
 
@@ -529,12 +565,8 @@ https://www.marinespecies.org/introduced/
 ---
 
 
-![bg 75%](../images/data_management/architecture.png)
+![bg 85%](../images/data_management/architecture.png)
 
 ---
 
 ![bg 75%](../images/data_management/templates.png)
-
----
-
-## OBIS data access
