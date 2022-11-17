@@ -228,7 +228,7 @@ To remove missing values from a vector, use `na.omit()`:
 na.omit(heights)
 ```
 
-### Packages
+## Packages
 
 Packages are reusable collections of code developed by the community. Packages can be installed from different sources, including The Comprehensive R Archive Network (CRAN) and GitHub. To install a package from CRAN, use `install.packages()`:
 
@@ -254,7 +254,8 @@ Packages hosted on GitHub can be installed using the `remotes` package:
 remotes::install_github("iobis/robis")
 ```
 
-## Base graphics
+## Graphics
+### Base graphics
 
 R has built-in graphics capabilities.
 
@@ -263,7 +264,7 @@ plot(x, y)
 hist(rnorm(10000), breaks = 50)
 ```
 
-## ggplot2 graphics
+### ggplot2 graphics
 
 ggplot2 is an alternative graphics framework, based on Hadley Wickham's [Layered Grammar of Graphics](http://vita.had.co.nz/papers/layered-grammar.html) which builds on [The Grammar of Graphics](https://link.springer.com/book/10.1007/0-387-28695-0) by Leland Wilkinson.
 
@@ -274,7 +275,9 @@ In practice, this works like this:
 ```{r message=FALSE, warning=FALSE, collapse=TRUE}
 library(ggplot2)
 
-ggplot(data = data.frame(x, y)) +
+df <- data.frame(x, y)
+
+ggplot(data = df) +
   geom_line(aes(x = x, y = y)) +
   geom_point(aes(x = x, y = y, color = x, size = y))
 ```

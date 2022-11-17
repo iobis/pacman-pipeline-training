@@ -10,14 +10,6 @@ knit: (function(inputFile, encoding) {
   rmarkdown::render(inputFile, encoding = encoding, output_file = "../../../docs/rey_analysis.html") })  
 ---
 
-<!--
-- https://deneflab.github.io/MicrobeMiseq/demos/mothur_2_phyloseq.html
-- https://joey711.github.io/phyloseq/plot_ordination-examples.html
-- https://david-barnett.github.io/microViz/articles/web-only/ordination.html
-- https://www.gdc-docs.ethz.ch/MDA/handouts/MDA20_PhyloseqFormation_Mahendra_Mariadassou.pdf
-- http://rstudio-pubs-static.s3.amazonaws.com/266780_cac4994322494658904507a7606b1dd8.html
--->
-
 <style>
 img { box-shadow: none !important; border: 0px !important; }
 </style>
@@ -86,7 +78,7 @@ stats_phyla <- df %>%
   summarize(abundance = sum(Abundance)) %>%
   arrange(desc(abundance))
 
-top_phyla <- head(na.omit(stats_phyla$phylum), 8)
+top_phyla <- stats_phyla$phylum %>% na.omit() %>% head(8)
 top_phyla
 ```
 
@@ -151,7 +143,7 @@ ggplot() +
   theme_minimal()
 ```
 
-### Abundance (reads) by sample and phylum
+### Abundance (reads) by sample and phylum (optional)
 
 ```{r message=FALSE, warning=FALSE}
 stats_sample_phylum <- df %>%
@@ -250,6 +242,8 @@ Rarefaction is an interpolation of species richness to smaller samples sizes to 
 vegan::rarecurve(t(otu_table(physeq)), step = 1000)
 ```
 
+### Do it yourself (optional)
+
 Alternatively, run `vegan::rarefy()` for every sample and construct the graph yourself:
 
 ```{r message=FALSE, warning=FALSE}
@@ -297,6 +291,8 @@ plot_ordination(physeq = physeq, ordination = ord, type = "samples", color = "ev
   theme_classic()
 ```
 
+#### Adding taxa (optional)
+
 We can also add taxa to the ordination plot, but styling this is a bit awkward as samples and taxa are treated as a single dataset.
 
 ```{r message=FALSE, warning=FALSE}
@@ -306,7 +302,7 @@ plot_ordination(physeq = subset_taxa(physeq, !is.na(phylum)), ordination = ord, 
   theme_classic()
 ```
 
-### Non-metric MDS (NMDS) with phyloseq
+### Non-metric MDS (NMDS) with phyloseq (optional)
 
 Another ordination method is non-metric MDS (NMDS). Let's try NMDS with our dataset aggregated at the species level, and plot the most abundant species together with the sites.
 
