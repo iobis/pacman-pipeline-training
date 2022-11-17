@@ -1,0 +1,110 @@
+kingdom	phylum	class	order	family	genus	species	lastvalue	otu_seq_comp_appr	otu_db	lsid	taxonRank	specificEpithet
+asv.21	Eukaryota	Arthropoda	Insecta	Lepidoptera	Notodontidae	Harpyia	Harpyia umbrosa	Harpyia umbrosa	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.248	Eukaryota	Arthropoda	Insecta	Lepidoptera	Geometridae	Eois	Eois sp. 2 PS_2010	Eois sp. 2 PS_2010	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.274	Eukaryota		Bigyra	Thraustochytrida	Thraustochytriaceae	Aurantiochytrium	Aurantiochytrium limacinum	Aurantiochytrium limacinum	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.304	Eukaryota	Annelida	Polychaeta	Phyllodocida	Polynoidae		Polynoidae sp. BOLD_AAY5847	Polynoidae sp. BOLD_AAY5847	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.315	Eukaryota	Arthropoda	Insecta	Coleoptera	Meloidae	Hycleus	Hycleus histrio	Hycleus histrio	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.357	Eukaryota	Arthropoda	Arachnida	Araneae	Araneidae	Neoscona	Neoscona theisi	Neoscona theisi	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.528	Eukaryota	Oomycota		Leptomitales		Apodachlya	Apodachlya minima	Apodachlya minima	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.671	Eukaryota	Mollusca	Bivalvia				Bivalvia sp. BOLD_ACQ7224	Bivalvia sp. BOLD_ACQ7224	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.727	Eukaryota	Arthropoda	Insecta	Coleoptera			Coleoptera sp. INDOBIOSYS_CCDB26008_B08	Coleoptera sp. INDOBIOSYS_CCDB26008_B08	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.728	Eukaryota	Annelida	Polychaeta	Phyllodocida	Polynoidae		Polynoidae sp. BOLD_AAY5847	Polynoidae sp. BOLD_AAY5847	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.786	Eukaryota	Annelida	Clitellata	Crassiclitellata	Megascolecidae		Megascolecidae sp. DPEW105401	Megascolecidae sp. DPEW105401	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.1056	Eukaryota	Arthropoda	Collembola	Entomobryomorpha	Tomoceridae	Tomocerus	Tomocerus ocreatus	Tomocerus ocreatus	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.1060	Eukaryota		Phaeophyceae	Ectocarpales	Acinetosporaceae		Acinetosporaceae sp. 6 AP_2014	Acinetosporaceae sp. 6 AP_2014	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.1163	Eukaryota	Streptophyta	Magnoliopsida	Amborellales	Amborellaceae	Amborella	Amborella trichopoda	Amborella trichopoda	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.1199	Eukaryota	Arthropoda	Arachnida	Trombidiformes	Tydeidae		Tydeidae sp. CHACB114_10	Tydeidae sp. CHACB114_10	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.1225	Eukaryota	Arthropoda	Insecta	Ephemeroptera	Baetidae	Callibaetis	Callibaetis ferrugineus	Callibaetis ferrugineus	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.1242	Eukaryota	Arthropoda	Arachnida	Araneae	Cheiracanthiidae	Cheiracanthium	Cheiracanthium sp. 2 HY_2020	Cheiracanthium sp. 2 HY_2020	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.1280	Eukaryota		Phaeophyceae	Ectocarpales	Ectocarpaceae		Ectocarpaceae sp. 1 AP_2014	Ectocarpaceae sp. 1 AP_2014	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.1353	Eukaryota		Chrysophyceae		Apoikiaceae	Apoikiospumella	Apoikiospumella mondseeiensis	Apoikiospumella mondseeiensis	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.1447	Eukaryota		Bigyra	Bicosoecida		Cafileria	Cafileria marina	Cafileria marina	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.1468	Eukaryota	Chlorophyta	Trebouxiophyceae	Chlorellales	Chlorellaceae		Chlorellaceae sp. 311 I	Chlorellaceae sp. 311 I	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.1515	Eukaryota	Picozoa					Picobiliphyte sp. MS584_11	Picobiliphyte sp. MS584_11	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.1530	Eukaryota	Arthropoda	Hexanauplia	Harpacticoida			Harpacticoida sp. DNZ085	Harpacticoida sp. DNZ085	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.1556	Eukaryota	Arthropoda	Insecta	Lepidoptera	Saturniidae	Archaeoattacus	Archaeoattacus edwardsii	Archaeoattacus edwardsii	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.1630	Eukaryota	Arthropoda	Arachnida	Mesostigmata	Parasitidae		Parasitidae sp. BIOUG24480_H07	Parasitidae sp. BIOUG24480_H07	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.1662	Eukaryota	Arthropoda	Hexanauplia	Sessilia	Balanidae		Balanidae sp. 1 SR_2017	Balanidae sp. 1 SR_2017	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.1666	Eukaryota	Mollusca	Bivalvia				Bivalvia sp. BOLD_ACQ7224	Bivalvia sp. BOLD_ACQ7224	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.1729	Eukaryota	Rhodophyta	Florideophyceae	Hapalidiales	Hapalidiaceae	Roseolithon	Roseolithon karaiborum	Roseolithon karaiborum	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.1911	Eukaryota	Chlorophyta	Trebouxiophyceae				Trebouxiophyceae sp. MX_AZ01	Trebouxiophyceae sp. MX_AZ01	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.1946	Eukaryota	Arthropoda	Insecta	Hemiptera	Naucoridae	Laccocoris	Laccocoris limigenus	Laccocoris limigenus	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.1953	Eukaryota	Arthropoda	Insecta	Coleoptera	Cerambycidae	Clytus	Clytus ruricola	Clytus ruricola	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.1961	Eukaryota	Arthropoda	Arachnida	Trombidiformes	Rhagidiidae		Rhagidiidae sp. BOLD_AAM8011	Rhagidiidae sp. BOLD_AAM8011	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.2021	Eukaryota	Arthropoda	Hexanauplia	Harpacticoida	Canthocamptidae		Canthocamptidae sp. BOLD_ACJ8158	Canthocamptidae sp. BOLD_ACJ8158	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.2041	Eukaryota	Ascomycota	Sordariomycetes	Hypocreales	Ophiocordycipitaceae	Purpureocillium	Purpureocillium lilacinum	Purpureocillium lilacinum	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.2048	Eukaryota	Oomycota		Leptomitales		Apodachlya	Apodachlya minima	Apodachlya minima	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.2136	Eukaryota	Arthropoda	Insecta	Diptera	Syrphidae	Pseudodoros	Pseudodoros clavatus	Pseudodoros clavatus	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.2193	Eukaryota		Chrysophyceae		Apoikiaceae	Apoikiospumella	Apoikiospumella mondseeiensis	Apoikiospumella mondseeiensis	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.2319	Eukaryota	Mollusca	Bivalvia				Bivalvia sp. BOLD_ACQ7224	Bivalvia sp. BOLD_ACQ7224	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.2365	Eukaryota	Arthropoda					Arthropoda sp. ZP222	Arthropoda sp. ZP222	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.2352	Eukaryota		Phaeophyceae	Ectocarpales	Acinetosporaceae		Acinetosporaceae sp. 16 AP_2014	Acinetosporaceae sp. 16 AP_2014	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.2382	Eukaryota	Arthropoda	Insecta	Odonata	Libellulidae	Trithemis	Trithemis pallidinervis	Trithemis pallidinervis	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.2451	Eukaryota	Arthropoda	Hexanauplia	Harpacticoida			Harpacticoida sp. DNZ085	Harpacticoida sp. DNZ085	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.2443	Eukaryota	Arthropoda	Insecta	Coleoptera	Coccinellidae	Nephus	Nephus sp. CO589	Nephus sp. CO589	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.2478	Eukaryota	Arthropoda	Insecta	Lepidoptera	Hesperiidae	Lucida	Lucida lucia	Lucida lucia	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.2503	Eukaryota	Rhodophyta	Florideophyceae	Corallinales			Corallinales sp.	Corallinales sp.	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.2547	Eukaryota						Amoebozoa sp.	Amoebozoa sp.	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.2563	Eukaryota	Arthropoda	Hexanauplia	Sessilia	Balanidae		Balanidae sp. 1 SR_2017	Balanidae sp. 1 SR_2017	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.2567	Eukaryota	Arthropoda	Hexanauplia	Sessilia	Balanidae		Balanidae sp. 1 SR_2017	Balanidae sp. 1 SR_2017	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.2580	Eukaryota	Mollusca	Bivalvia				Bivalvia sp. BOLD_ACQ7224	Bivalvia sp. BOLD_ACQ7224	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.2624	Eukaryota	Oomycota		Peronosporales	Peronosporaceae	Nothophytophthora		Nothophytophthora	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.2952	Eukaryota		Bigyra	Thraustochytrida	Thraustochytriaceae	Aurantiochytrium		Aurantiochytrium	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.2962	Eukaryota	Arthropoda	Insecta	Coleoptera	Scarabaeidae	Onthophagus	Onthophagus sagittarius	Onthophagus sagittarius	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.3053	Eukaryota	Arthropoda	Arachnida	Araneae	Cheiracanthiidae	Cheiracanthium	Cheiracanthium sp. 2 HY_2020	Cheiracanthium sp. 2 HY_2020	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.3107	Eukaryota		Bigyra	Thraustochytrida	Thraustochytriaceae	Botryochytrium	Botryochytrium radiatum	Botryochytrium radiatum	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.3127	Eukaryota		Phaeophyceae	Ectocarpales	Acinetosporaceae		Acinetosporaceae sp. 2 AP_2014	Acinetosporaceae sp. 2 AP_2014	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.3222	Eukaryota	Ascomycota	Sordariomycetes	Diaporthales	Juglanconidaceae	Juglanconis	Juglanconis sp.	Juglanconis sp.	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.3232	Eukaryota	Oomycota		Saprolegniales	Saprolegniaceae	Achlya	Achlya oligacantha	Achlya oligacantha	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.3253	Eukaryota	Arthropoda	Arachnida	Araneae	Linyphiidae	Arcuphantes	Arcuphantes pennatus	Arcuphantes pennatus	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.3398	Eukaryota	Arthropoda	Insecta	Lepidoptera			Lepidoptera gen. sp. ACU5906	Lepidoptera gen. sp. ACU5906	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.3418	Eukaryota	Cnidaria	Hydrozoa				Hydrozoa sp. HS0174	Hydrozoa sp. HS0174	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.3423	Eukaryota	Arthropoda	Hexanauplia	Sessilia	Balanidae		Balanidae sp. 1 SR_2017	Balanidae sp. 1 SR_2017	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.3447	Eukaryota	Cnidaria	Hydrozoa	Leptothecata	Obeliidae			Obeliidae	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.3462	Eukaryota	Mollusca	Bivalvia				Bivalvia sp. BOLD_ACQ7224	Bivalvia sp. BOLD_ACQ7224	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.3553	Eukaryota	Arthropoda	Malacostraca	Bathynellacea	Parabathynellidae		Parabathynellidae sp. H_SPA045	Parabathynellidae sp. H_SPA045	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.3648	Eukaryota	Porifera	Demospongiae	Haplosclerida	Chalinidae		Chalinidae sp. HS0146	Chalinidae sp. HS0146	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.3670	Eukaryota	Oomycota		Saprolegniales	Saprolegniaceae	Brevilegnia	Brevilegnia macrospora	Brevilegnia macrospora	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.3853	Eukaryota	Ascomycota	Saccharomycetes	Saccharomycetales	Dipodascaceae	Geotrichum	Geotrichum candidum	Geotrichum candidum	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.3863	Eukaryota	Picozoa					Picobiliphyte sp. MS584_11	Picobiliphyte sp. MS584_11	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.3865	Eukaryota	Discosea	Flabellinia	Dactylopodida	Paramoebidae	Cunea	Cunea thuwala	Cunea thuwala	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.3892	Eukaryota		Phaeophyceae	Ectocarpales	Chordariaceae		Chordariaceae sp. 22 AP_2014	Chordariaceae sp. 22 AP_2014	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.3910	Eukaryota	Arthropoda	Insecta	Ephemeroptera	Baetidae	Afroptilum	Afroptilum sudafricanum	Afroptilum sudafricanum	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.3964	Eukaryota	Chlorophyta	Trebouxiophyceae				Trebouxiophyceae sp. MX_AZ01	Trebouxiophyceae sp. MX_AZ01	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.4105	Eukaryota		Bigyra	Thraustochytrida	Thraustochytriaceae	Botryochytrium	Botryochytrium radiatum	Botryochytrium radiatum	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.4150	Eukaryota	Annelida	Polychaeta	Phyllodocida	Polynoidae		Polynoidae sp. BOLD_AAY5847	Polynoidae sp. BOLD_AAY5847	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.4131	Eukaryota	Annelida	Polychaeta	Spionida	Spionidae		Spionidae sp. USNM IZ 1450562	Spionidae sp. USNM IZ 1450562	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.4210	Eukaryota	Arthropoda	Insecta	Lepidoptera	Noctuidae		Noctuidae sp. HELNA941_10	Noctuidae sp. HELNA941_10	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.4292	Eukaryota	Chytridiomycota	Chytridiomycetes	Spizellomycetales	Powellomycetaceae	Powellomyces	Powellomyces hirtus	Powellomyces hirtus	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.4357	Eukaryota	Arthropoda	Collembola	Poduromorpha	Neanuridae	Neanura	Neanura muscorum	Neanura muscorum	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.4393	Eukaryota	Arthropoda	Insecta	Hemiptera	Aphrophoridae	Clovia	Clovia bipunctata	Clovia bipunctata	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.4423	Eukaryota	Arthropoda	Insecta	Coleoptera	Pyrochroidae	Pyrochroa	Pyrochroa coccinea	Pyrochroa coccinea	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.4462	Eukaryota		Bigyra	Bicosoecida		Cafileria	Cafileria marina	Cafileria marina	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.4476	Eukaryota	Arthropoda	Insecta	Hemiptera	Cimicidae	Latrocimex	Latrocimex spectans	Latrocimex spectans	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.4487	Eukaryota	Chlorophyta	Trebouxiophyceae	Chlorellales	Chlorellaceae		Chlorellaceae sp. 311 I	Chlorellaceae sp. 311 I	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.4549	Eukaryota	Arthropoda	Arachnida	Trombidiformes	Eupodidae		Eupodidae sp. BIOUG35138_F05	Eupodidae sp. BIOUG35138_F05	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.4567	Eukaryota	Chlorophyta	Trebouxiophyceae				Trebouxiophyceae sp. MX_AZ01	Trebouxiophyceae sp. MX_AZ01	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.4570	Eukaryota	Arthropoda	Insecta	Lepidoptera	Saturniidae	Archaeoattacus	Archaeoattacus edwardsii	Archaeoattacus edwardsii	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.4616	Eukaryota	Rhodophyta	Florideophyceae	Rhodymeniales	Rhodymeniaceae		Rhodymeniaceae sp. 1SA	Rhodymeniaceae sp. 1SA	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.4644	Eukaryota	Tubulinea	Elardia	Arcellinida	Hyalospheniidae	Apodera	Apodera vas	Apodera vas	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.4688	Eukaryota	Arthropoda	Insecta	Hemiptera	Psyllidae	Baeopelma	Baeopelma foersteri	Baeopelma foersteri	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.4657	Eukaryota	Arthropoda	Insecta	Diptera	Chironomidae	Dicrotendipes	Dicrotendipes nervosus	Dicrotendipes nervosus	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.4753	Eukaryota	Arthropoda	Insecta	Lepidoptera	Hesperiidae	Lucida	Lucida lucia	Lucida lucia	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.4767	Eukaryota	Arthropoda	Insecta	Lepidoptera	Nepticulidae	Trifurcula	Trifurcula bupleurella	Trifurcula bupleurella	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.4747	Eukaryota	Cnidaria	Hydrozoa	Leptothecata	Obeliidae			Obeliidae	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.4813	Eukaryota	Arthropoda	Hexanauplia	Harpacticoida	Normanellidae		Normanellidae sp. DZMB058	Normanellidae sp. DZMB058	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.4865	Eukaryota		Bigyra	Thraustochytrida	Thraustochytriaceae	Botryochytrium	Botryochytrium radiatum	Botryochytrium radiatum	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.5064	Eukaryota	Evosea	Eumycetozoa					Eumycetozoa	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.5108	Eukaryota	Arthropoda	Arachnida	Araneae	Dysderidae	Parachtes	Parachtes loboi	Parachtes loboi	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.5228	Eukaryota	Cnidaria	Hydrozoa	Leptothecata	Obeliidae			Obeliidae	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.5281	Eukaryota	Arthropoda	Arachnida	Araneae	Linyphiidae	Arcuphantes	Arcuphantes pennatus	Arcuphantes pennatus	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.5264	Eukaryota	Arthropoda	Insecta	Coleoptera	Scarabaeidae	Onthophagus	Onthophagus obscurior	Onthophagus obscurior	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.5316	Eukaryota	Evosea	Eumycetozoa					Eumycetozoa	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.5432	Eukaryota	Zoopagomycota	Entomophthoromycetes	Entomophthorales	Ancylistaceae	Neoconidiobolus	Neoconidiobolus thromboides	Neoconidiobolus thromboides	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.5422	Eukaryota	Arthropoda	Insecta	Coleoptera	Carabidae	Antireicheia	Antireicheia tsitsikamae	Antireicheia tsitsikamae	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.5552	Eukaryota	Onychophora	Udeonychophora	Euonychophora	Peripatopsidae	Peripatopsis	Peripatopsis clavigera	Peripatopsis clavigera	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.5600	Eukaryota	Annelida	Polychaeta	Phyllodocida	Polynoidae		Polynoidae sp. BOLD_AAY7885	Polynoidae sp. BOLD_AAY7885	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.5655	Eukaryota		Phaeophyceae	Ectocarpales	Chordariaceae		Chordariaceae sp. 1 AP_2014	Chordariaceae sp. 1 AP_2014	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.5639	Eukaryota	Arthropoda	Insecta	Coleoptera	Carabidae	Eucallia	Eucallia boussingaultii	Eucallia boussingaultii	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.5644	Eukaryota	Nematoda	Chromadorea	Chromadorida	Chromadoridae		Chromadoridae sp. 09PROBE_01551	Chromadoridae sp. 09PROBE_01551	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
+asv.5681	Eukaryota	Arthropoda	Insecta	Hymenoptera	Apidae	Anthophora	Anthophora sp. Kyr1_41w	Anthophora sp. Kyr1_41w	bowtie2;2.4.4;ANACAPA-blca;2021	MIDORI_UNIQ_GB246_CO1			
