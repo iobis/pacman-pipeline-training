@@ -41,7 +41,7 @@ p { font-size: 0.9em; }
 
 ---
 
-### Why data sharing
+### Data sharing
 
 <style>
     ul { font-size: 0.7em; }
