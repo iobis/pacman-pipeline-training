@@ -4,8 +4,9 @@ This repository contains the materials for the PacMAN bioinformatics pipeline tr
 
 | Time | Topic |
 | --- | --- |
-| 9:00 - 10:30 | Data management intro <br/> R crash course |
-| 11:00 - 13:00 | Bioinformatics pipeline |
+| 9:00 - 10:30 | Bioinformatics pipeline |
+| 11:00 - 12:00 | Bioinformatics pipeline |
+| 12:00 - 13:00 | R crash course |
 | 14:00 - 15:00 | Bioinformatics pipeline results <br/> Data analysis |
 
 - [Data management slides](https://iobis.github.io/pacman-pipeline-training/data_management_slides.html)

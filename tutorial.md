@@ -4,6 +4,12 @@ Contents:
 
 - [Pipeline architecture](#pipeline-architecture)
 - [Pipeline steps](#pipeline-steps)
+  - [Quality control](#quality-control)
+  - [Trimming](#trimming)
+  - [Removing primer sequences](#removing-primer-sequences)
+  - [DADA2](#dada2)
+  - [Taxonomic annotation](#taxonomic-annotation)
+  - [Report](#report)
 - [Running the pipeline](#running-the-pipeline)
   - [Installation instructions for Windows](#installation-instructions-for-windows)
   - [Configure and run the pipeline](#configure-and-run-the-pipeline)
@@ -19,7 +25,7 @@ In this tutorial we will use the PacMAN pipeline to analyze sequence data from R
 
 The PacMAN bioinformatics pipeline consists of a sequence of data processing steps, which can be either scripts or commands for executing existing software tools.
 
-The pipeline steps are orchestrated using [Snakemake](https://snakemake.github.io/), which is a Python based workflow management system. A snakemake workflow if defined by a set of *rules*, where each rules defines how the step is executed, and what the input and output files are. Snakemake uses these input and output file specifications to determine in which order the steps needs to be executed. The rules are defined in a text file called the Snakefile.
+The pipeline steps are orchestrated using [Snakemake](https://snakemake.github.io/), which is a Python based workflow management system. A snakemake workflow if defined by a set of *rules*, where each rules defines how the step is executed, and what the input and output files are. Snakemake uses these input and output file specifications to determine in which order the steps needs to be executed. In data engineering this is often referred to as a [directed acyclic graph](https://en.wikipedia.org/wiki/Directed_acyclic_graph) (DAG). The rules are defined in a text file called the Snakefile.
 
 To make workflows portable and reproducible, Snakemake can execute each step in an isolated [conda](https://docs.conda.io/en/latest/) environment. Conda is a package manager which was originally developed for Python, but it is now used for distributing packages for other languages as well, including R. Using conda environments ensures that the steps use the exact same versions of software dependencies, whereever they are run.
 
@@ -66,6 +72,8 @@ A schematic overview of the PacMAN pipeline and the files it generates is availa
 |40|1 in 10,000|99.99%|
 |50|1 in 100,000|99.999%|
 |60|1 in 1,000,000|99.9999%|
+
+The quality graph below shows how the signal quality degrades as strands are being sequenced:
 
 ![](images/fastqc.png)
 
@@ -146,6 +154,18 @@ Results are also exported as a phyloseq object `phyloseq_object.rds` which can e
 In the final step, a HTML report summarizing all steps is generated.
 
 ## Running the pipeline
+
+For running the pipeline we will need the following ingredients:
+
+- Windows Subsystem for Linux
+- conda
+- Snakemake
+- the pipeline code
+- a reference database
+- some raw reads
+
+If you are participating in the on-site training, WSL should be configured for you. You can skip to the conda installation step after checking the WSL installation with `wsl -l -v`.
+
 ### Installation instructions for Windows
 
 To be able to run the pipeline on Windows systems, we'll need to install the Windows Subsystem for Linux (WSL 2).
@@ -192,13 +212,11 @@ chmod +x Miniconda3-py39_4.12.0-Linux-x86_64.sh
 ./Miniconda3-py39_4.12.0-Linux-x86_64.sh
 ```
 
-At the end of the installation procedure, enter `yes` when asked to run `conda init`.
+:fire: At the end of the installation procedure, enter `yes` when asked to run `conda init`.
 
 After installing Miniconda, close the terminal and start a new one.
 
-#### Install Snakemake
-
-After starting a new Ubuntu session, install `mamba` by typing the following into the terminal:
+We will also install [Mamba](https://mamba.readthedocs.io/en/latest/), which is a faster drop-in replacement for conda:
 
 ```
 conda init
@@ -207,7 +225,9 @@ conda install -n base -c conda-forge mamba
 
 Enter `y` if confirmation is asked.
 
-Next, install Snakemake:
+#### Install Snakemake
+
+Next, install Snakemake using Mamba:
 
 ```
 mamba create -c conda-forge -c bioconda -n snakemake snakemake
@@ -215,17 +235,13 @@ mamba create -c conda-forge -c bioconda -n snakemake snakemake
 
 #### Install and start Visual Studio Code
 
-Download Visual Studio Code from <https://code.visualstudio.com/Download> and install. Then open Visual Studio Code from the Ubuntu terminal by typing:
-
-`code`
-
-You may need to open a new WSL terminal for this. In Visual Studio Code, open the Desktop folder (`File` > `Open Folder`). If prompted, select `Yes, I trust the authors`.
+Download Visual Studio Code from <https://code.visualstudio.com/Download>, install, and start. In Visual Studio Code, open the Desktop folder (`File` > `Open Folder`). If prompted, select `Yes, I trust the authors`.
 
 Then open the terminal panel (`Terminal` > `New Terminal`). Use the `+` button in the terminal panel to open a new `Ubuntu (WSL)`
 
 #### Download the pipeline
 
-Still in the WSL terminal, clone the pipeline repository to your machine:
+Still in the WSL terminal, use git to clone the pipeline repository on GitHub to your machine. Git is a version control system, and downloading the pipeline using git will allow you to easily update to the pipeline to the latest version (`git pull`), revert any changes you have made (`git reset --hard`), or even contribute to the codebase.
 
 ```
 git clone https://github.com/iobis/PacMAN-pipeline.git
@@ -291,7 +307,7 @@ The manifest file `config/manifest_rey_2samples.csv` lists the forward and rever
 
 ##### Sample data template
 
-The sample data temlate file `config/sample_data_template_rey_2samples.csv` contains sample metadata which will be used in the Darwin Core files generated by the pipeline. A limited set of Darwin Core fields has been populated, but more can be added.
+The sample data template file `config/sample_data_template_rey_2samples.csv` contains sample metadata which will be used in the Darwin Core files generated by the pipeline. A limited set of Darwin Core fields has been populated, but more can be added.
 
 #### Run the pipeline
 
@@ -315,7 +331,7 @@ To actually run the pipeline, execute again without `--dryrun`.
 
 ## Analysis of the pipeline results
 
-Continue to [Rey et al. 2020 data analysis](https://iobis.github.io/pacman-pipeline-training/rey_analysis.html).
+Continue to [Metabarcoding data analysis](https://iobis.github.io/pacman-pipeline-training/rey_analysis.html).
 
 [^1]: Nelly Sélem Mojica; Diego Garfias Gallegos; Claudia Zirión Martínez; Jesús Abraham Avelar Rivas; Aaron Jaime Espinosa; Abel Lovaco Flores; Tania Vanessa Arellano Fernandez (2022, Jan). Metagenomics for Software Carpentry lesson, Jan 2022. Zenodo. <https://doi.org/10.5281/zenodo.4285900>
 

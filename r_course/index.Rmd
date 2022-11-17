@@ -295,9 +295,42 @@ saveRDS(x, file = "x.rds")
 x <- readRDS("x.rds")
 ```
 
-## The Tidyverse
+## The tidyverse
 
-To do.
+The [tidyverse](https://www.tidyverse.org/) is a collection of packages focusing on data science, with a common philosophy and grammar.
+
+```{r message=FALSE, warning=FALSE, collapse=TRUE}
+tidyverse::tidyverse_packages()
+```
+
+Some notable tidyverse packages are:
+
+| Package | Description |
+| --- | --- |
+| dplyr | A Grammar of Data Manipulation |
+| tidyr | Tidy Messy Data |
+| stringr | Simple, Consistent Wrappers for Common String Operations |
+| readr | Read Rectangular Text Data |
+| ggplot2 | Create Elegant Data Visualisations Using the Grammar of Graphics |
+| purrr | Functional Programming Tools |
+
+The [tidyverse style guide](https://style.tidyverse.org/) recommends using the pipe operator `%>%` from the `magrittr` package to emphasize sequences of actions. The pipe operator passes the output of a function as the first argument of the next one. Since version 4.1.0, a pipe operator `|>` has been added to R (note that there are [a few differences](https://r4ds.hadley.nz/workflow-pipes.html#vs)).
+
+By combining pipes and `dplyr` verbs, we can write very readble data manipulation sequences. For exalple:
+
+```{r message=FALSE, warning=FALSE, collapse=TRUE}
+library(dplyr)
+
+head(iris)
+
+iris %>%
+  group_by(Species) %>%
+  summarize(
+    sepal_mean = mean(Sepal.Length),
+    sepal_min = min(Sepal.Length),
+    sepal_max = max(Sepal.Length)
+  )
+```
 
 ## Style guides
 
