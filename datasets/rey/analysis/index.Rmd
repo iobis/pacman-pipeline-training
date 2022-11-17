@@ -1,5 +1,5 @@
 ---
-title: Metabarcoding exploratory data analysis: Rey et al. 2020
+title: Metabarcoding exploratory data analysis
 date: "`r Sys.Date()`"
 author: Pieter Provoost
 output: (function(...) {

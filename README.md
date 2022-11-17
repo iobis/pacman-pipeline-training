@@ -9,10 +9,10 @@ This repository contains the materials for the PacMAN bioinformatics pipeline tr
 | 12:00 - 13:00 | R crash course |
 | 14:00 - 15:00 | Bioinformatics pipeline results <br/> Data analysis |
 
-- [Data management slides](https://iobis.github.io/pacman-pipeline-training/data_management_slides.html)
+- [Data management slides](https://iobis.github.io/pacman-pipeline-training/data_management_slides.pdf)
 - [Bioinformatics pipeline tutorial](tutorial.md)
 - [R crash course](https://iobis.github.io/pacman-pipeline-training/r_course.html)
-- [Data analysis tutorial](https://iobis.github.io/pacman-pipeline-training/rey_analysis.html)
+- [Metabarcoding data analysis tutorial](https://iobis.github.io/pacman-pipeline-training/rey_analysis.html)
 
 ## Example datasets
 
