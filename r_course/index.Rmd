@@ -18,7 +18,7 @@ Install the latest R from <https://ftp.belnet.be/mirror/CRAN/bin/windows/base/>.
 
 ## Install Rstudio (Windows)
 
-Install Rstudio Desktop from <https://ftp.belnet.be/mirror/CRAN/bin/windows/base/>.
+Install Rstudio Desktop from <https://posit.co/downloads/>.
 
 Open RStudio and create a new R script:
 
