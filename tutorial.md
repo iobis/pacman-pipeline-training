@@ -1,5 +1,7 @@
 # PacMAN bioinformatics pipeline tutorial
 
+:warning: For up-to-date documentation, refer to the [pipeline README](https://github.com/iobis/pacman-pipeline).
+
 Contents:
 
 - [Pipeline architecture](#pipeline-architecture)
